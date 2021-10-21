@@ -17,6 +17,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
+
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
 };
