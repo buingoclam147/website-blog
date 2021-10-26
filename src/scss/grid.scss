@@ -13,13 +13,14 @@
 }
 
 .align-item-center {
-  height: 100%;
   align-items: center;
+  display: flex;
 }
 
 .text-align-center {
   text-align: center;
   width: 100%;
+  display: flex;
 }
 
 .row {
@@ -130,6 +131,10 @@
 .mx-6 {
   margin-right: 4rem !important;
   margin-left: 4rem !important;
+}
+.mx-7 {
+  margin-right: 6rem !important;
+  margin-left: 6rem !important;
 }
 
 .mx-auto {
@@ -531,3 +536,4 @@
 .f-right {
   float: right;
 }
+

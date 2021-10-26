@@ -3,14 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
 import { ShareModule } from 'src/app/share/share.module';
-import { NzCardModule } from 'ng-zorro-antd/card';
+import { CustomerComponent } from './customer.component';
 @NgModule({
-  declarations: [],
+  declarations: [CustomerComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
-    ShareModule,
-    NzCardModule
+    ShareModule
   ]
 })
 export class CustomerModule { }

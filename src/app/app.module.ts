@@ -17,6 +17,7 @@ import { IconDefinition } from '@ant-design/icons-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -33,6 +34,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NzGridModule,
     HttpClientModule,
     BrowserAnimationsModule,
     NzIconModule.forRoot(icons)
