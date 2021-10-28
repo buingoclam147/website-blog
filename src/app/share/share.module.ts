@@ -5,19 +5,21 @@ import { FormsModule } from '@angular/forms';
 // import module ng-zorro
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NzGridModule,
-    NzCardModule
+    NzCardModule,
+    NzIconModule
   ],
-  declarations: [],
   exports:[
     NzGridModule,
     NzCardModule,
-    FormsModule
+    FormsModule,
+    NzIconModule
   ]
 })
 export class ShareModule { }

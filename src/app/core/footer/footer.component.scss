@@ -1,0 +1,26 @@
+.footer {
+  background-color: #333;
+
+  p {
+    color: #e7e7e7;
+  }
+
+  .logo-footer {
+    width: 240px;
+    height: auto;
+  }
+
+  .ul-foo {
+    display: flex;
+
+    li:hover {
+      cursor: pointer;
+      color: white;
+    }
+
+    li {
+      color: #e7e7e7;
+    }
+  }
+
+}
