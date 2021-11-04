@@ -484,7 +484,12 @@
 .pb-5 {
   padding-bottom: 3rem !important;
 }
-
+.pb-6 {
+  padding-bottom: 4rem !important;
+}
+.pb-7 {
+  padding-bottom: 6rem !important;
+}
 .ps-0 {
   padding-left: 0 !important;
 }
@@ -537,5 +542,11 @@
 
 .f-right {
   float: right;
+}
+.relative{
+  position: relative;
+}
+.absolute{
+  position: absolute;
 }
 

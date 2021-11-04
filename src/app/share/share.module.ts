@@ -6,20 +6,30 @@ import { FormsModule } from '@angular/forms';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzInputModule } from 'ng-zorro-antd/input';
+
+//import declarations
+import { InputBasicComponent } from './components/input-basic/input-basic.component';
+import { ButtonBasicComponent } from './components/button-basic/button-basic.component';
 
 @NgModule({
+  declarations:[InputBasicComponent, ButtonBasicComponent],
   imports: [
     CommonModule,
     FormsModule,
     NzGridModule,
     NzCardModule,
-    NzIconModule
+    NzIconModule,
+    NzInputModule
   ],
   exports:[
     NzGridModule,
     NzCardModule,
     FormsModule,
-    NzIconModule
+    NzIconModule,
+    NzInputModule,
+    InputBasicComponent,
+    ButtonBasicComponent
   ]
 })
 export class ShareModule { }
