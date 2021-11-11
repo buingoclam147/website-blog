@@ -18,7 +18,7 @@
     <app-button-basic value="Tiếp theo" class="f-right ms-4"></app-button-basic>
   </div>
 </div> -->
-<div class="center pt-5 pb-6">
+<div class="center pt-5 pb-6 mb-5">
   <div class="container-fluid ">
     <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="mb-5">
       <div nz-col class="gutter-row" [nzSpan]="12">
@@ -31,6 +31,11 @@
           <app-input-basic placeholder="Biệt danh của bạn"></app-input-basic>
         </div>
       </div>
+      <div nz-col class="gutter-row" [nzSpan]="12">
+        <div class="inner-box mt-5">
+          <app-input-basic placeholder="Thể loại"></app-input-basic>
+        </div>
+      </div>
     </div>
     <div class="bgr-box">
       <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="data" (ready)="onReady($event)"></ckeditor>
@@ -38,4 +43,3 @@
     <app-button-basic value="Tiếp theo" class="f-right ms-4"></app-button-basic>
   </div>
 </div>
-<pre style="color: white;">{{data}}</pre>

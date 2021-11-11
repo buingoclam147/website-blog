@@ -14,7 +14,7 @@ import { BlogStoreService } from '../store/blog-store.service';
 })
 export class BlogComponent implements OnInit {
 	public Editor = customBuild;
-	data = "<p>Xin chào, hãy viết bài tại đây</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>";
+	data = "<p>Xin chào, hãy viết bài tại đây</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>";
 	constructor(
 		private blogStore: BlogStoreService,
 		private storage: AngularFireStorage,

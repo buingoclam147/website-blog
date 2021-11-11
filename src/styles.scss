@@ -33,76 +33,86 @@ a {
   text-decoration: none;
 }
 
-.title-1{
+.title-1 {
   font-size: 12px;
 }
-.title-2{
+
+.title-2 {
   font-size: 14px;
 }
-.title-3{
+
+.title-3 {
   font-size: 16px;
 }
-.title-4{
+
+.title-4 {
   font-size: 18px;
 }
-.title-5{
+
+.title-5 {
   font-size: 24px;
 }
-.title-6{
+
+.title-6 {
   font-size: 32px;
 }
-.title-7{
+
+.title-7 {
   font-size: 40px;
 }
-.title-8{
+
+.title-8 {
   font-size: 64px;
 }
+.bgr-w{
+  background-color: white !important;
+}
+.relative{
+  position: relative;
+}
 
-body  {
+
+
+
+body {
   background-image: url('https://static.pexels.com/photos/414171/pexels-photo-414171.jpeg');
-background-size:cover;
-      -webkit-animation: slidein 100s;
-      animation: slidein 100s;
+  background-size: cover;
+  -webkit-animation: slidein 100s;
+  animation: slidein 100s;
 
-      -webkit-animation-fill-mode: forwards;
-      animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 
-      -webkit-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
 
-      -webkit-animation-direction: alternate;
-      animation-direction: alternate;              
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }
 
 @-webkit-keyframes slidein {
-from {background-position: top; background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
 }
 
 @keyframes slidein {
-from {background-position: top;background-size:3000px; }
-to {background-position: -100px 0px;background-size:2750px;}
+  from {
+    background-position: top;
+    background-size: 3000px;
+  }
+
+  to {
+    background-position: -100px 0px;
+    background-size: 2750px;
+  }
 
 }
 
 
-
-.center
-{
-display: flex;
-align-items: center;
-justify-content: center;
-// position: absolute;
-// margin: auto;
-// top: 0;
-// right: 0;
-// bottom: 0;
-// left: 0;
-border-radius: 3px;
-}
-.center h1{
-text-align:center;
-color:white;
-font-family: 'Source Code Pro', monospace;
-text-transform:uppercase;
-}
