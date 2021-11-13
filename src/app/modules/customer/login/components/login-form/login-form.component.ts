@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { ROUTER_CONST } from 'src/app/core/const/router.const';
-// import { AuthService } from 'src/app/core/share/service/auth.service';
+import { AuthService } from 'src/app/core/authentication/auth.service';
+import { API } from 'src/app/core/const/api.const';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +16,7 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    // private auth: AuthService,
+    private auth: AuthService,
     private router: Router,
   ) { }
 
@@ -33,13 +33,15 @@ export class LoginFormComponent implements OnInit {
     });
   }
   login(): void {
-    // this.auth.loginCustomer(this.formEverything.value).subscribe(x => {
-    //   if (x.login) {
-    //     this.errorMessage = true;
-    //   }
-    //   else {
-    //     this.router.navigate([ROUTER_CONST.NOT_AUTH.HOME]);
-    //   }
-    // }, _ => this.errorMessage = true);
+    this.auth.login(this.formEverything.value).subscribe(x => {
+      if (x.login) {
+        this.errorMessage = true;
+      }
+      else {
+        this.router.navigate([API.LOGIN]);
+      }
+    }, _ => {
+      this.errorMessage = true
+    });
   }
 }

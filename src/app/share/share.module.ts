@@ -9,6 +9,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
@@ -28,7 +29,8 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
     NzInputModule,
     NzMessageModule,
     NzAlertModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzButtonModule
   ],
   exports:[
     NzGridModule,
@@ -42,7 +44,8 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
     ButtonBasicComponent,
     FormControlErrorComponent,
     InputPwComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzButtonModule
   ]
 })
 export class ShareModule { }

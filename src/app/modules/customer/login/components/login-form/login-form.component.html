@@ -1,7 +1,7 @@
 <h2 class="t-login">Đăng nhập</h2>
-<form [formGroup]="formEverything" class="form-login  mb-3">
-    <div class="input-group">
-        <p for="userName"> Tên đăng nhập</p>
+<form [formGroup]="formEverything" class="form-login  mb-4">
+    <div class="input-group mb-4">
+        <p for="userName" class=" m-0"> Tên đăng nhập</p>
         <nz-input-group [nzSize]="'large'" class="name-input-gr">
             <input nz-input placeholder="Tên đăng nhập" [formControlName]="'userName'" [type]="'text'" />
         </nz-input-group>
@@ -12,8 +12,8 @@
                             }
                             "></app-form-control-error>
     </div>
-    <div class="input-group">
-        <p for="password">Mật khẩu</p>
+    <div class="input-group mb-4">
+        <p for="password" class=" m-0">Mật khẩu</p>
         <app-input-pw placeholder="Mật khẩu" [formControlName]="'password'"></app-input-pw>
         <app-form-control-error class="err" [form]="formEverything" [controlName]="'password'" [errorsMessage]="
                             {
@@ -22,10 +22,10 @@
                             }
                             "></app-form-control-error>
     </div>
-    <button type="submit" class="btn-lg" [disabled]="formEverything.invalid" (click)="login()">Đăng
+    <button type="submit" class="btn-lg mb-3" [disabled]="formEverything.invalid" (click)="login()">Đăng
         nhập</button>
     <nz-alert *ngIf="errorMessage" class="err" nzType="error"
-        nzMessage="Thông tin tài khoản hoặc mật khẩu không chính xác"></nz-alert>
+        nzMessage="Tài khoản hoặc mật khẩu không chính xác"></nz-alert>
 </form>
 
 <div class="re-fo">
