@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { API } from 'src/app/core/const/api.const';
+import { ROUTER_CONST } from 'src/app/core/const/router.const';
 
 @Component({
   selector: 'app-login-form',
@@ -38,7 +39,7 @@ export class LoginFormComponent implements OnInit {
         this.errorMessage = true;
       }
       else {
-        this.router.navigate([API.LOGIN]);
+        this.router.navigate([ROUTER_CONST['Trang chủ']]);
       }
     }, _ => {
       this.errorMessage = true

@@ -1,24 +1,36 @@
-.header{
-    background-color: #333;
-    .logo-header{
-        width: 240px;
-        height: auto;
-    }
-    .ul-nav{
-        display: flex;
-        li:hover{
-            cursor: pointer;
-            color: white;
-        }
-        li{
-            color: #e7e7e7;
-        }
-    }
-    .btn-login{
-        color: white;
-        :hover{
-            cursor: pointer;
-        }
-    }
-}
+.header {
+  background-color: #333;
 
+  .logo-header {
+    width: 240px;
+    height: auto;
+  }
+
+  .ul-nav {
+    display: flex;
+
+    li:hover {
+      cursor: pointer;
+      color: white;
+    }
+
+    li {
+      color: #e7e7e7;
+    }
+  }
+
+  .btn-login {
+    color: white;
+
+    :hover {
+      cursor: pointer;
+    }
+  }
+
+  .avt {
+    width: 40px;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 50%;
+  }
+}

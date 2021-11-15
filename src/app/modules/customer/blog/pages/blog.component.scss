@@ -1,19 +1,38 @@
-.background-random{
-    // background-image: url(https://picsum.photos/200/300);
-    width: auto;
-    background-size: cover;
-}
-.center{
-    min-height: 600px;
-}
-.overflow{
-    height: 700px;
-    width: auto;
-    overflow-y: scroll;
-}
-.bgr-box{
-    background-color: white;
+.background-random {
+  // background-image: url(https://picsum.photos/200/300);
+  width: auto;
+  background-size: cover;
 }
 
+.center {
+  min-height: 600px;
+}
 
+.overflow {
+  height: 700px;
+  width: auto;
+  overflow-y: scroll;
+}
 
+.bgr-box {
+  background-color: white;
+}
+
+nz-select {
+    width: 100%;
+  }
+  nz-divider {
+    margin: 8px 0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 8px;
+  }
+  input {
+  }
+  .add-item {
+    flex: 0 0 auto;
+    padding: 8px;
+    display: block;
+  }

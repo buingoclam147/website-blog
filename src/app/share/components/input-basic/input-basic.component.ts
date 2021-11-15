@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input-basic',
@@ -7,10 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class InputBasicComponent implements OnInit {
   @Input() placeholder = '';
-  value = "";
+  @Input() value = "";
+  @Output('valueChange') change = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit() {
   }
-
+  emitChangeValue(event) {
+    this.change.emit(event);
+  }
 }

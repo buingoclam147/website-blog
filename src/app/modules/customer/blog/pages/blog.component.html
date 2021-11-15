@@ -23,23 +23,41 @@
     <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="mb-5">
       <div nz-col class="gutter-row" [nzSpan]="12">
         <div class="inner-box">
-          <app-input-basic placeholder="Tiêu đề bài viết"></app-input-basic>
+          <app-input-basic placeholder="Tiêu đề bài viết" [(value)]="valueTitle"></app-input-basic>
         </div>
       </div>
       <div nz-col class="gutter-row" [nzSpan]="12">
         <div class="inner-box">
-          <app-input-basic placeholder="Biệt danh của bạn"></app-input-basic>
+          <app-input-basic placeholder="Biệt danh của bạn" [(value)]="valueNikname"></app-input-basic>
         </div>
       </div>
-      <div nz-col class="gutter-row" [nzSpan]="12">
-        <div class="inner-box mt-5">
-          <app-input-basic placeholder="Thể loại"></app-input-basic>
-        </div>
+      <div nz-col class="gutter-row" [nzSpan]="24">
+        <ng-container *ngIf="lCategory$ |async as listCategory">
+          <div class="inner-box mt-5">
+            <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate" nzPlaceHolder="Thể loại"
+              [nzSize]="'large'" [ngModel]="onCategory" (ngModelChange)="onCategoryChange($event)">
+              <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item"></nz-option>
+            </nz-select>
+          </div>
+        </ng-container>
       </div>
     </div>
     <div class="bgr-box">
-      <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="data" (ready)="onReady($event)"></ckeditor>
+      <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="data" (ready)="onReady($event)" ></ckeditor>
     </div>
-    <app-button-basic value="Tiếp theo" class="f-right ms-4"></app-button-basic>
+    <app-button-basic value="Tiếp theo" class="f-right ms-4" (click)="routerDemo($event)"></app-button-basic>
   </div>
+
 </div>
+
+
+<ng-template #renderTemplate>
+  <nz-divider></nz-divider>
+  <div class="container">
+    <input type="text" nz-input #inputElement />
+    <a class="add-item" (click)="addItem(inputElement)">
+      <i nz-icon nzType="plus"></i>
+      Thêm thể loại
+    </a>
+  </div>
+</ng-template>

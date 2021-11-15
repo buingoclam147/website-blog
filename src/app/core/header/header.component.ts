@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../authentication/auth.service';
 import { ROUTER_CONST } from '../const/router.const';
 
 @Component({
@@ -11,6 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {

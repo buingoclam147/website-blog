@@ -10,7 +10,9 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
 import { NzButtonModule } from 'ng-zorro-antd/button';
-
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
 import { ButtonBasicComponent } from './components/button-basic/button-basic.component';
@@ -19,7 +21,7 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
 
 
 @NgModule({
-  declarations:[InputBasicComponent, ButtonBasicComponent, FormControlErrorComponent, InputPwComponent],
+  declarations: [InputBasicComponent, ButtonBasicComponent, FormControlErrorComponent, InputPwComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -30,9 +32,12 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
     NzMessageModule,
     NzAlertModule,
     ReactiveFormsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDropDownModule,
+    NzSelectModule,
+    NzDividerModule
   ],
-  exports:[
+  exports: [
     NzGridModule,
     NzCardModule,
     FormsModule,
@@ -45,7 +50,10 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
     FormControlErrorComponent,
     InputPwComponent,
     ReactiveFormsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzDropDownModule,
+    NzSelectModule,
+    NzDividerModule
   ]
 })
 export class ShareModule { }
