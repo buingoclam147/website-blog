@@ -18,7 +18,7 @@
             </div>
             <div nz-col class="gutter-row btn-login m-auto" [nzSpan]="4">
                 <div class="inner-box ">
-                    <ng-container [ngTemplateOutlet]="logoutTpl" *ngIf="(auth.currentUser$|async); else loginTpl">
+                    <ng-container [ngTemplateOutlet]="loginTpl" *ngIf="userId === '' || userId === null; else logoutTpl">
                     </ng-container>
 
                 </div>
@@ -35,7 +35,7 @@
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
                 <li nz-menu-item>Thông tin cá nhân</li>
-                <li nz-menu-item>Đăng xuất</li>
+                <li nz-menu-item (click)="logout()">Đăng xuất</li>
             </ul>
         </nz-dropdown-menu>
     </div>

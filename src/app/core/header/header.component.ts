@@ -9,16 +9,21 @@ import { ROUTER_CONST } from '../const/router.const';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  userId = '';
   constructor(
     private router: Router,
     public auth: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.auth.currentUser$.subscribe(id => {
+      this.userId = id;
+    });
   }
   onRouter(i): void {
-    console.log(i.target.outerText);
     this.router.navigate([ROUTER_CONST[i.target.outerText]]);
+  }
+  logout() {
+    this.auth.logout();
   }
 }

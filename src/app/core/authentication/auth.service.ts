@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { BehaviorSubject, observable, Observable } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { HttpService, METHOD } from '../http/http.service';
+import { ROUTER_CONST } from '../const/router.const';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private _currentUser$ = new BehaviorSubject('');
-  private _idMain$ = new BehaviorSubject('');
   public readonly currentUser$ = this._currentUser$.asObservable();
-  public readonly idMain$ = this._idMain$.asObservable();
   constructor(
-    private httpService: HttpService,
     private router: Router,
+    private httpService: HttpService,
   ) {
     const exitedUserId = localStorage.getItem('userId');
     if (exitedUserId) {
@@ -25,7 +24,9 @@ export class AuthService {
       tap(x => {
         if (typeof (x._id) !== 'undefined') {
           localStorage.setItem('role', x.role);
+          localStorage.setItem('userId', x._id);
           this._currentUser$.next(x._id);
+
         }
       })
     );
@@ -38,9 +39,11 @@ export class AuthService {
     }
     return this.httpService.sendToServer(METHOD.POST, 'user', data)
   }
-  // logout() {
-  //   localStorage.removeItem('userId');
-  //   this.router.navigate([ROUTER_CONST.LOGIN]);
-  //   this._currentUser$.next('');
-  // }
+  
+  logout() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('role');
+    this.router.navigate([ROUTER_CONST['Đăng nhập']]);
+    this._currentUser$.next('');
+  }
 }

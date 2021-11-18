@@ -9,23 +9,20 @@ import { ROUTER_CONST } from 'src/app/core/const/router.const';
   styleUrls: ['./first-home.component.scss']
 })
 export class FirstHomeComponent implements OnInit {
-
   constructor(
     private router: Router,
-    private auth:AuthService
   ) { }
 
   ngOnInit() {
   }
   onRouter(_) {
-    this.auth.currentUser$.subscribe(i=>{
-      if(i){
-        this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]);
-      }
-      else{
-        this.router.navigate([ROUTER_CONST['Đăng nhập']]);
-      }
-    })
+    if (localStorage.getItem('userId') !== undefined || localStorage.getItem('userId') !== '' || localStorage.getItem('userId') !== null) {
+      this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]);
+    }
+    else {
+      this.router.navigate([ROUTER_CONST['Đăng nhập']]);
+
+    }
   }
-  
+
 }
