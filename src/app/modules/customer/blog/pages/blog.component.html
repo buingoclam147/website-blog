@@ -1,4 +1,30 @@
-<!-- <div class="background-random pt-4 pb-7">
+<ng-container [ngSwitch]="state">
+  <ng-container *ngSwitchCase="1">
+    <ng-template [ngTemplateOutlet]="addTpl"></ng-template>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <ng-template [ngTemplateOutlet]="preViewTpl"></ng-template>
+  </ng-container>
+</ng-container>
+
+<ng-template #preViewTpl>
+  <div class="preView">
+    <div class="d-flex dataView">
+      <!-- <div [innerHtml]="data" class="mb-4" readonly>
+      </div> -->
+      <ckeditor [editor]="Editor" [config]="{}" [(ngModel)]="data" [innerHtml]="data"></ckeditor>
+      {{data}}
+    </div>
+    <div class="d-flex f-right ms-4">
+      <button class="mx-2 btn-basic" (click)="view(1)">Chỉnh sửa</button>
+      <button class="mx-2 btn-basic" (click)="routerDemo($event)">Đăng bài</button>
+    </div>
+  </div>
+
+</ng-template>
+
+<ng-template #addTpl>
+  <!-- <div class="background-random pt-4 pb-7">
   <div class="container-fluid ">
     <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="mb-5">
       <div nz-col class="gutter-row" [nzSpan]="12">
@@ -18,46 +44,59 @@
     <app-button-basic value="Tiếp theo" class="f-right ms-4"></app-button-basic>
   </div>
 </div> -->
-<div class="center pt-5 pb-6 mb-5">
-  <div class="container-fluid ">
-    <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="mb-5">
-      <div nz-col class="gutter-row" [nzSpan]="12">
-        <div class="inner-box">
-          <app-input-basic placeholder="Tiêu đề bài viết" [(value)]="valueTitle"></app-input-basic>
-        </div>
-      </div>
-      <div nz-col class="gutter-row" [nzSpan]="12">
-        <div class="inner-box">
-          <app-input-basic placeholder="Biệt danh của bạn" [(value)]="valueNikname"></app-input-basic>
-        </div>
-      </div>
-      <div nz-col class="gutter-row" [nzSpan]="24">
-        <ng-container *ngIf="lCategory$ |async as listCategory">
-          <div class="inner-box mt-5">
-            <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate" nzPlaceHolder="Thể loại"
-              [nzSize]="'large'" [ngModel]="onCategory" (ngModelChange)="onCategoryChange($event)">
-              <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item"></nz-option>
-            </nz-select>
+  <div class="center pt-5 pb-6 mb-5">
+    <div class="container-fluid ">
+      <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="mb-5">
+        <div nz-col class="gutter-row" [nzSpan]="12">
+          <div class="inner-box">
+            <app-input-basic placeholder="Tiêu đề bài viết" [(value)]="valueTitle"></app-input-basic>
           </div>
-        </ng-container>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="12">
+          <div class="inner-box">
+            <app-input-basic placeholder="Biệt danh của bạn" [(value)]="valueNikname"></app-input-basic>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="24">
+          <ng-container *ngIf="lCategory$ |async as listCategory">
+            <div class="inner-box mt-5">
+              <nz-select nzShowSearch nzAllowClear [nzDropdownRender]="renderTemplate" nzPlaceHolder="Thể loại"
+                [nzSize]="'large'" [ngModel]="onCategory" (ngModelChange)="onCategoryChange($event)">
+                <nz-option *ngFor="let item of listOfItem" [nzLabel]="item" [nzValue]="item"></nz-option>
+              </nz-select>
+              <nz-alert *ngIf="errorMessage" class="err mt-3" nzType="error" nzMessage="Thể loại không được bỏ trống">
+              </nz-alert>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="bgr-box mb-3">
+        <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="data" (ready)="onReady($event)"></ckeditor>
+      </div>
+      <div class="d-flex f-right ms-4">
+        <button class="mx-2 btn-basic" (click)="view(2)">Xem</button>
+        <button class="mx-2 btn-basic" (click)="routerDemo($event)">Đăng bài</button>
       </div>
     </div>
-    <div class="bgr-box">
-      <ckeditor [editor]="Editor" [config]="config" [(ngModel)]="data" (ready)="onReady($event)" ></ckeditor>
+    <pre style="color:white;">{{data}}</pre>
+  </div>
+
+
+  <ng-template #renderTemplate>
+    <nz-divider></nz-divider>
+    <div class="container">
+      <input type="text" nz-input #inputElement />
+      <a class="add-item" (click)="addItem(inputElement)">
+        <i nz-icon nzType="plus"></i>
+        Thêm thể loại
+      </a>
     </div>
-    <app-button-basic value="Tiếp theo" class="f-right ms-4" (click)="routerDemo($event)"></app-button-basic>
-  </div>
-
-</div>
-
-
-<ng-template #renderTemplate>
-  <nz-divider></nz-divider>
-  <div class="container">
-    <input type="text" nz-input #inputElement />
-    <a class="add-item" (click)="addItem(inputElement)">
-      <i nz-icon nzType="plus"></i>
-      Thêm thể loại
-    </a>
-  </div>
+  </ng-template>
 </ng-template>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="Thông báo!" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+  nzOkText="Đồng ý" nzCancelText="Hủy">
+  <ng-container *nzModalContent>
+    <p>Hiện tại thể loại của bạn hiện chưa có, bạn có chắc muốn thêm mới thể loại và đăng bài?</p>
+  </ng-container>
+</nz-modal>

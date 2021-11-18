@@ -19,20 +19,35 @@
 }
 
 nz-select {
-    width: 100%;
-  }
-  nz-divider {
-    margin: 8px 0;
-  }
-  .container {
-    display: flex;
-    flex-wrap: nowrap;
-    padding: 8px;
-  }
-  input {
-  }
-  .add-item {
-    flex: 0 0 auto;
-    padding: 8px;
-    display: block;
-  }
+  width: 100%;
+}
+
+nz-divider {
+  margin: 8px 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 8px;
+}
+
+input {}
+
+.add-item {
+  flex: 0 0 auto;
+  padding: 8px;
+  display: block;
+}
+
+.preView {
+  padding-top: 16px;
+  min-height: 700px;
+  background-color: white;
+  padding-bottom: 60px;
+}
+
+.dataView {
+  flex-direction: column;
+}
+
