@@ -149,27 +149,4 @@ body {
   box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
-
-//  .image {
-//   display: table;
-//   clear: both;
-//   text-align: center;
-//   margin: 0.9em auto;
-//   min-width: 50px;
-// }
-//  .image-style-side {
-//   float: right;
-//   margin-left: var(--ck-image-style-spacing);
-//   max-width: 50%;
-// }
-//  .image_resized {
-//   max-width: 100%;
-//   display: block;
-//   box-sizing: border-box;
-// }
-// .ck.ck-editor__editable .image, .ck.ck-editor__editable .image-inline {
-//   position: relative;
-// }
-// img{
-//   width: 100%;
-// }
+.border-none{border: none !important;}
