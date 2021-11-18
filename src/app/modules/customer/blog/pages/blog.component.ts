@@ -13,6 +13,7 @@ import { BlogStoreService } from '../store/blog-store.service';
 	styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+	dateNow = new Date().getTime();
 	isVisible = false;
 	state = 1;
 	valueNikname = '';
@@ -86,7 +87,7 @@ export class BlogComponent implements OnInit {
 			title: this.valueTitle,
 			nikname: this.valueNikname,
 			content: this.data,
-			createAt: new Date().getTime(),
+			createAt: this.dateNow,
 			status: 'Pending'
 		}
 		this.blogStore.postOneBlog(dataBlog).subscribe(x => {
