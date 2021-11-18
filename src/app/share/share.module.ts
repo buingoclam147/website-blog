@@ -71,10 +71,7 @@ import { CkeditorFormComponent } from './components/ckeditor-form/ckeditor-form.
     NzSelectModule,
     NzDividerModule,
     NzModalModule,
-    CkeditorFormComponent,
-    CKEditorModule,
-    HttpClientModule,
-    AngularFireStorageModule,
+    CkeditorFormComponent
   ]
 })
 export class ShareModule { }

@@ -41,7 +41,6 @@ input {}
 }
 
 .preView {
-  padding-top: 16px;
   min-height: 700px;
   background-color: white;
   padding-bottom: 60px;
@@ -49,5 +48,6 @@ input {}
 
 .dataView {
   flex-direction: column;
+  margin-bottom: 16px;
 }
 
