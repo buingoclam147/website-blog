@@ -9,8 +9,29 @@
 
 <ng-template #preViewTpl>
   <div class="preView">
-    <div class="d-flex dataView">
-      <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="data"></app-ckeditor-form>
+    <div class=" dataView">
+      <div class="individual d-flex justify-content-center align-item-center pt-4 mb-3">
+        <div nz-row class="align-item-center">
+          <div class="mx-2 d-flex align-item-center">
+            <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown>
+            <div class="textEspecially ms-2">{{valueNikname}}</div>
+          </div>
+          <div class="st-thanh">/</div>
+          <div class="mx-2">
+            <div>{{ dateNow |date:'dd/MM/yyyy'}}</div>
+          </div>
+          <div class="st-thanh">/</div>
+          <div class="mx-2">
+            <div class="textEspecially">{{onCategory}}</div>
+          </div>
+        </div>
+        <div nz-row class="titleView d-flex align-item-center  justify-content-center mt-3 title-7">
+          {{valueTitle}}
+        </div>
+      </div>
+
+      <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="data">
+      </app-ckeditor-form>
     </div>
     <div class="d-flex f-right ms-4">
       <button class="mx-2 btn-basic" (click)="view(1)">Chỉnh sửa</button>
