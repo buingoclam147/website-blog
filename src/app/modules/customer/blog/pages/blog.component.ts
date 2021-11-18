@@ -26,7 +26,7 @@ export class BlogComponent implements OnInit {
 	idUser;
 	listOfOption: Array<{ label: string; value: string }> = [];
 	listOfTagOptions = [];
-	data = "<p>Xin chào, hãy viết bài tại đây</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>";
+	data = "<p>Xin chào, hãy viết bài tại đây</p>";
 	constructor(
 		private categoryService: CategoryService,
 		private auth: AuthService,
@@ -69,38 +69,41 @@ export class BlogComponent implements OnInit {
 				data.forEach(i => {
 					i.name === this.onCategory ? currentIdCategory = i._id : i._id;
 				});
-				const dataBlog = {
-					categoryId: currentIdCategory,
-					userId: this.idUser,
-					title: this.valueTitle,
-					nikname: this.valueNikname,
-					content: this.data,
-					createAt: new Date().getTime(),
-					status: 'Pending'
-				}
-				this.blogStore.postOneBlog(dataBlog).subscribe(x => {
-					console.log(x);
-					this.message.success('Bài viết đã được đăng thành công!', {
-						nzDuration: 5000
-					});
-				})
+				this.createBlog(currentIdCategory);
 			});
 		}
 		else {
-			const reqCategory ={
-				name: this.onCategory
-			}
-			this.categoryService.postOneCategory(reqCategory).subscribe(x => {
-				console.log(x);
-				this.isVisible = true;
-			})
+			this.isVisible = true;
 		}
 
 
 	}
 
+	createBlog(idCategory: string): void {
+		const dataBlog = {
+			categoryId: idCategory,
+			userId: this.idUser,
+			title: this.valueTitle,
+			nikname: this.valueNikname,
+			content: this.data,
+			createAt: new Date().getTime(),
+			status: 'Pending'
+		}
+		this.blogStore.postOneBlog(dataBlog).subscribe(x => {
+			console.log(x);
+			this.message.success('Bài viết đã được đăng thành công!', {
+				nzDuration: 5000
+			});
+		})
+	}
 	handleOk(): void {
 		this.isVisible = false;
+		const reqCategory = {
+			name: this.onCategory
+		}
+		this.categoryService.postOneCategory(reqCategory).subscribe(x => {
+			this.createBlog(x._id);
+		})
 	}
 
 	handleCancel(): void {
