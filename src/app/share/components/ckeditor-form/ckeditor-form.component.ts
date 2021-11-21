@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { filter } from 'rxjs/operators';
 import * as customBuild from 'src/app/ckCustomBuild/build/ckeditor';
-import { UploadAdapter } from 'src/app/modules/customer/blog/models/myUploadAdapter';
+import { CONFIG_CK_FORM } from 'src/app/core/const/sys.const';
+import { UploadAdapter } from 'src/app/share/models/myUploadAdapter';
 import { BlogStoreService } from 'src/app/modules/customer/blog/store/blog-store.service';
 @Component({
   selector: 'app-ckeditor-form',
@@ -19,47 +21,8 @@ export class CkeditorFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.blogStore.currentimage$.subscribe(urlImgae => {
-      this.data = this.data.slice(0, this.data.indexOf("<img>")) + `<img src="${urlImgae}"/>` + this.data.slice(this.data.indexOf("<img>") + 5);
-    })
   }
-  @Input() config = {
-    toolbar: [
-      'heading',
-      '|',
-      'bold',
-      'italic',
-      'underline',
-      '|',
-      'fontBackgroundColor',
-      'fontColor',
-      'fontFamily',
-      'fontSize',
-      'highlight',
-      '|',
-      'bulletedList',
-      'numberedList',
-      'todoList',
-      '|',
-      'outdent',
-      'indent',
-      '|',
-      'subscript',
-      'superscript',
-      '|',
-      'imageUpload',
-      'blockQuote',
-      'insertTable',
-      'mediaEmbed',
-      'imageInsert',
-      'link',
-      '|',
-      'undo',
-      'redo'
-    ],
-    language: 'vn'
-
-  }
+  @Input() config = CONFIG_CK_FORM;
   public onReady(editor: any) {
     editor.ui.getEditableElement().parentElement.insertBefore(
       editor.ui.view.toolbar.element,

@@ -1,0 +1,98 @@
+.boxMultimedia {
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.textEspecially {
+  color: #333;
+}
+
+nz-select {
+  width: 100%;
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  color: rgb(102, 99, 99);
+  font-size: 18px;
+}
+
+.inputSearch {
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+}
+
+.inputSearch:hover {
+  border: 1px solid white;
+}
+
+.inputSearch:focus {
+  border: 1px solid white;
+}
+
+.inputSearch:focus-visible {
+  border: 1px solid white;
+}
+
+.inputSearch::placeholder {
+  /* chạy tốt trên Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  font-weight: 400;
+  opacity: 1;
+  /* Firefox */
+}
+
+.iconSearch {
+  border: 1px solid white;
+  position: absolute;
+  right: -30px;
+  top: 0;
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  border-top-right-radius: 5px !important;
+  border-bottom-right-radius: 5px !important;
+
+  i {
+    margin-top: 5px;
+    color: white;
+  }
+}
+
+.bgrCard {
+  color: white;
+  background: linear-gradient(to bottom, #4c588d, #d29376);
+  min-height: 500px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.cart {
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 405.33px;
+    height: auto;
+  }
+
+  .boxPersonal {
+    background-color: #CEE5D0;
+    color: #333;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 8px 16px;
+    justify-content: space-between;
+
+    b {
+      float: left;
+      align-items: center;
+    }
+
+    div {
+      float: right;
+    }
+  }
+
+  h3 {
+    color: white;
+  }
+}

@@ -1,4 +1,5 @@
 // import style
+
 @import './scss/grid.scss';
 @import './app/ckCustomBuild/sample/styles.css';
 /*ng-zorro*/
@@ -160,3 +161,22 @@ body {
 .textEspecially{
   color: #4c91a7;
 }
+.bold{
+  font-weight: bold;
+}
+.mheight{
+  min-height: 550px;
+}
+
+ .selectCategory > .ant-select-selector{
+  border: none !important;
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  color: white;
+}
+.selectCategory .ant-select-arrow{
+  display: none;
+}
+.pointer:hover{
+  cursor: pointer;
+}
+

@@ -6,7 +6,7 @@
                     <img class="logo-header" src="/assets/logo-mini.PNG" alt="logo blog">
                 </div>
             </div>
-            <div nz-col class="gutter-row align-item-center" [nzSpan]="12">
+            <div nz-col class="gutter-row align-items-center" [nzSpan]="12">
                 <div class="inner-box  ms-auto">
                     <ul class="ul-nav">
                         <li class="ms-3 title-4" (click)="onRouter($event)">Trang chủ</li>
@@ -35,6 +35,7 @@
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
                 <li nz-menu-item>Thông tin cá nhân</li>
+                <li nz-menu-item >Bài viết của bạn</li>
                 <li nz-menu-item (click)="logout()">Đăng xuất</li>
             </ul>
         </nz-dropdown-menu>

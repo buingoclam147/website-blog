@@ -1,0 +1,119 @@
+<div class="bgr-w pb-5">
+    <div class="container-fluid mheight">
+        <div class="py-4 text-center">
+            <h3 class="title-8 bold textEspecially">Danh sách bài viết</h3>
+        </div>
+        <div class="boxMultimedia py-2 align-items-center text-center title-4" nz-row
+            [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+            <div nz-col class="gutter-row" [nzSpan]="6">
+                <div class="inner-box">
+                    <nz-select ngModel="All" class="selectCategory">
+                        <nz-option nzValue="All" nzLabel="All"></nz-option>
+                        <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                        <nz-option nzValue="kaka" nzLabel="kaka"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="6">
+                <div class="inner-box">
+                    <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton" class="relative">
+                        <input type="text" nz-input placeholder="Tìm kiếm" class="inputSearch" />
+                    </nz-input-group>
+                    <ng-template #suffixIconButton>
+                        <button nz-button nzType="primary" nzSearch class="iconSearch"><i nz-icon
+                                nzType="search"></i></button>
+                    </ng-template>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="6">
+                <div class="inner-box  pointer">Của tôi</div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="6">
+                <div class="inner-box pointer" (click)="routerCreateBlog()">Tạo mới</div>
+            </div>
+        </div>
+        <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="bgrCard mt-2">
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box my-3">
+                    <div class="cart">
+                        <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                        <div class="boxPersonal d-flex mb-2">
+                            <b>Angular | Bùi Lâm</b>
+                            <div class="left">15/03/2015</div>
+                        </div>
+                        <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                    </div>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box">
+                    <div class="inner-box my-3">
+                        <div class="cart">
+                            <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                            <div class="boxPersonal d-flex mb-2">
+                                <b>Angular | Bùi Lâm</b>
+                                <div class="left">15/03/2015</div>
+                            </div>
+                            <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box">
+                    <div class="inner-box my-3">
+                        <div class="cart">
+                            <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                            <div class="boxPersonal d-flex mb-2">
+                                <b>Angular | Bùi Lâm</b>
+                                <div class="left">15/03/2015</div>
+                            </div>
+                            <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box my-3">
+                    <div class="cart">
+                        <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                        <div class="boxPersonal d-flex mb-2">
+                            <b>Angular | Bùi Lâm</b>
+                            <div class="left">15/03/2015</div>
+                        </div>
+                        <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                    </div>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box">
+                    <div class="inner-box my-3">
+                        <div class="cart">
+                            <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                            <div class="boxPersonal d-flex mb-2">
+                                <b>Angular | Bùi Lâm</b>
+                                <div class="left">15/03/2015</div>
+                            </div>
+                            <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div nz-col class="gutter-row" [nzSpan]="8">
+                <div class="inner-box">
+                    <div class="inner-box my-3">
+                        <div class="cart">
+                            <img src="/assets/bgr-card{{a}}.jpg" alt="">
+                            <div class="boxPersonal d-flex mb-2">
+                                <b>Angular | Bùi Lâm</b>
+                                <div class="left">15/03/2015</div>
+                            </div>
+                            <h3 class="title-4">Bác Hồ Chí Minh Vĩ Đại Của chúng ta, mãi mãi sống trong chúng ta</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
