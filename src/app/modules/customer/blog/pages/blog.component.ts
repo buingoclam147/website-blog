@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import { CONFIG_CK_FORM } from 'src/app/core/const/sys.const';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Pagination } from 'src/app/share/models/table.model';
 import { BlogStoreService } from '../store/blog-store.service';
@@ -13,6 +14,7 @@ import { BlogStoreService } from '../store/blog-store.service';
 	styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+	CONFIG_CK_FORM = CONFIG_CK_FORM
 	dateNow = new Date().getTime();
 	isVisible = false;
 	state = 1;
@@ -48,6 +50,9 @@ export class BlogComponent implements OnInit {
 		}));
 		this.auth.currentUser$.subscribe(id => {
 			this.idUser = id;
+		})
+		this.blogStore.currentimage$.subscribe(urlImgae => {
+			this.data = this.data.slice(0, this.data.indexOf("<img>")) + `<img src="${urlImgae}"/>` + this.data.slice(this.data.indexOf("<img>") + 5);
 		})
 
 	}
@@ -88,6 +93,7 @@ export class BlogComponent implements OnInit {
 			nikname: this.valueNikname,
 			content: this.data,
 			createAt: this.dateNow,
+			like: 0,
 			status: 'Pending'
 		}
 		this.blogStore.postOneBlog(dataBlog).subscribe(x => {

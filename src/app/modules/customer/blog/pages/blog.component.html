@@ -10,9 +10,9 @@
 <ng-template #preViewTpl>
   <div class="preView">
     <div class=" dataView">
-      <div class="individual d-flex justify-content-center align-item-center pt-4 mb-3">
-        <div nz-row class="align-item-center">
-          <div class="mx-2 d-flex align-item-center">
+      <div class="individual d-flex justify-content-center align-items-center pt-4 mb-3">
+        <div nz-row class="align-items-center">
+          <div class="mx-2 d-flex align-items-center">
             <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown>
             <div class="textEspecially ms-2">{{valueNikname}}</div>
           </div>
@@ -29,16 +29,13 @@
           {{valueTitle}}
         </div>
       </div>
-
-      <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="data">
-      </app-ckeditor-form>
+      <ng-template [ngTemplateOutlet]="ckTpl"></ng-template>
     </div>
     <div class="d-flex f-right ms-4">
       <button class="mx-2 btn-basic" (click)="view(1)">Chỉnh sửa</button>
       <button class="mx-2 btn-basic" (click)="routerDemo($event)">Đăng bài</button>
     </div>
   </div>
-
 </ng-template>
 
 <ng-template #addTpl>
@@ -69,7 +66,7 @@
         </div>
       </div>
       <div class="bgr-box mb-3">
-        <app-ckeditor-form [(data)]="data"></app-ckeditor-form>
+        <ng-template [ngTemplateOutlet]="ckTpl"></ng-template>
       </div>
       <div class="d-flex f-right ms-4">
         <button class="mx-2 btn-basic" (click)="view(2)">Xem</button>
@@ -77,7 +74,6 @@
       </div>
     </div>
   </div>
-
 
   <ng-template #renderTemplate>
     <nz-divider></nz-divider>
@@ -97,3 +93,10 @@
     <p>Hiện tại thể loại của bạn hiện chưa có, bạn có chắc muốn thêm mới thể loại và đăng bài?</p>
   </ng-container>
 </nz-modal>
+
+
+<ng-template #ckTpl>
+  <app-ckeditor-form [config]="state==2 ? { toolbar: [], language:''}: CONFIG_CK_FORM" [readonly]="state==2"
+    [(data)]="data">
+  </app-ckeditor-form>
+</ng-template>
