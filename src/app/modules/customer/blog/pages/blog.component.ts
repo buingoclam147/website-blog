@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import { ROUTER_CONST } from 'src/app/core/const/router.const';
 import { CONFIG_CK_FORM } from 'src/app/core/const/sys.const';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { Pagination } from 'src/app/share/models/table.model';
@@ -34,7 +36,8 @@ export class BlogComponent implements OnInit {
 		private categoryService: CategoryService,
 		private auth: AuthService,
 		private message: NzMessageService,
-		private blogStore: BlogStoreService
+		private blogStore: BlogStoreService,
+		private router: Router,
 	) {
 	}
 
@@ -96,11 +99,12 @@ export class BlogComponent implements OnInit {
 			like: 0,
 			status: 'Pending'
 		}
-		this.blogStore.postOneBlog(dataBlog).subscribe(x => {
-			console.log(x);
+		this.blogStore.postOneBlog(dataBlog).subscribe(data => {
+			console.log(data);
 			this.message.success('Bài viết đã được đăng thành công!', {
 				nzDuration: 5000
 			});
+			this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], data._id]);
 		})
 	}
 	handleOk(): void {
