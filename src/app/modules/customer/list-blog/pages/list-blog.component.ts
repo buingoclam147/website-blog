@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ROUTER_CONST } from 'src/app/core/const/router.const';
+import { CategoryService } from 'src/app/core/services/category.service';
+import { ListBlog } from 'src/app/share/models/blog.model';
+import { ListCategory } from 'src/app/share/models/category.model';
+import { Pagination, Table } from 'src/app/share/models/table.model';
+import { BlogStoreService } from '../../blog/store/blog-store.service';
 
 @Component({
   selector: 'app-list-blog',
@@ -9,17 +15,49 @@ import { ROUTER_CONST } from 'src/app/core/const/router.const';
   styleUrls: ['./list-blog.component.scss']
 })
 export class ListBlogComponent implements OnInit {
-  a = Math.floor(Math.random() * 6) + 1;
+  inputSearch = '';
+  valueSelect = '';
+  listBlog;
+  a = Math.floor(Math.random() * 8) + 1;
+  listCategory$: Observable<ListCategory>;
+  table: Table = new Table(new Pagination(+this.valueSelect, 0), 0, [],
+    {
+      categoryId: '',
+      Title: '',
+    });
   constructor(
     private auth: AuthService,
     private router: Router,
+    private blogStore: BlogStoreService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
+    this.listCategory$ = this.categoryService.getCategory(new Pagination(99, 0), '');
+    this.filterBlog();
+
   }
   routerCreateBlog() {
     this.auth.currentUser$.subscribe(x => {
-      x? this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]): this.router.navigate([ROUTER_CONST['Đăng nhập']]);
+      x ? this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]) : this.router.navigate([ROUTER_CONST['Đăng nhập']]);
     })
+  }
+  valueSelectChange(i): void {
+    this.table.filter.categoryId = i;
+    this.filterBlog();
+  }
+  filterBlog() {
+    this.blogStore.getBlog(this.table.pagination, this.table.filter).subscribe(x => {
+      this.table.total = x.total;
+      this.listBlog = x.data;
+      console.log(this.listBlog);
+    });
+  }
+  searchTitle() {
+    this.table.filter.title = this.inputSearch;
+    this.filterBlog();
+  }
+  routerBlogDetail(i){
+    this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], i]);
   }
 }

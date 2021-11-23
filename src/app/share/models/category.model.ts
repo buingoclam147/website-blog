@@ -7,4 +7,20 @@ export class Category {
         this.name = name;
         this.note = note;
     }
+<<<<<<< Updated upstream
 }
+=======
+};
+export class ListCategory {
+    total: string;
+    data: Array<Category>;
+    constructor
+        (
+            total: string,
+            data: Array<Category>
+        ) {
+        this.total = total;
+        this.data = data;
+    }
+}
+>>>>>>> Stashed changes
