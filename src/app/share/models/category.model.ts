@@ -7,9 +7,6 @@ export class Category {
         this.name = name;
         this.note = note;
     }
-<<<<<<< Updated upstream
-}
-=======
 };
 export class ListCategory {
     total: string;
@@ -23,4 +20,3 @@ export class ListCategory {
         this.data = data;
     }
 }
->>>>>>> Stashed changes
