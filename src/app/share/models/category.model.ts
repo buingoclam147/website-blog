@@ -7,4 +7,16 @@ export class Category {
         this.name = name;
         this.note = note;
     }
+};
+export class ListCategory {
+    total: string;
+    data: Array<object>;
+    constructor
+        (
+            total: string,
+            data: Array<object>
+        ) {
+        this.total = total;
+        this.data = data;
+    }
 }

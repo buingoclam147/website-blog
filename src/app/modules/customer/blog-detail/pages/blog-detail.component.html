@@ -1,1 +1,28 @@
-<p>blog-detail works!</p>
+<div class=" dataView">
+    <ng-container *ngIf="dataDetail$ |async as dataDetail">
+
+        <div class="individual d-flex justify-content-center align-items-center pt-4 mb-3">
+            <div nz-row class="align-items-center">
+                <div class="mx-2 d-flex align-items-center">
+                    <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown>
+                    <div class="textEspecially ms-2">{{dataDetail.nikname}}</div>
+                </div>
+                <div class="st-thanh">/</div>
+                <div class="mx-2">
+                    <div>{{ dataDetail.createAt|date:'dd/MM/yyyy'}}</div>
+                </div>
+                <div class="st-thanh">/</div>
+                <div class="mx-2">
+                    <ng-container *ngIf="idcategory$ |async as idcategory">
+                    <div class="textEspecially">{{dataDetail.categoryId |category:idcategory.data}}</div>
+                </ng-container>
+                </div>
+            </div>
+            <div nz-row class="titleView d-flex align-item-center  justify-content-center mt-3 title-7">
+                {{dataDetail.title}}
+            </div>
+        </div>
+        <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="dataDetail.content">
+        </app-ckeditor-form>
+    </ng-container>
+</div>
