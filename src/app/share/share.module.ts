@@ -30,10 +30,11 @@ import { InputBasicComponent } from './components/input-basic/input-basic.compon
 import { FormControlErrorComponent } from './components/form-control-error/form-control-error.component';
 import { InputPwComponent } from './components/input-pw/input-pw.component';
 import { CkeditorFormComponent } from './components/ckeditor-form/ckeditor-form.component';
+import { CategoryPipe } from './pipes/category.pipe';
 
 
 @NgModule({
-  declarations: [InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent],
+  declarations: [InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -71,7 +72,8 @@ import { CkeditorFormComponent } from './components/ckeditor-form/ckeditor-form.
     NzSelectModule,
     NzDividerModule,
     NzModalModule,
-    CkeditorFormComponent
+    CkeditorFormComponent,
+    CategoryPipe
   ]
 })
 export class ShareModule { }
