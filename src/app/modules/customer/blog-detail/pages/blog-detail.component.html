@@ -14,15 +14,17 @@
                 <div class="st-thanh">/</div>
                 <div class="mx-2">
                     <ng-container *ngIf="idcategory$ |async as idcategory">
-                    <div class="textEspecially">{{dataDetail.categoryId |category:idcategory.data}}</div>
-                </ng-container>
+                        <div class="textEspecially">{{dataDetail.categoryId |category:idcategory.data}}</div>
+                    </ng-container>
                 </div>
             </div>
             <div nz-row class="titleView d-flex align-item-center  justify-content-center mt-3 title-7">
                 {{dataDetail.title}}
             </div>
         </div>
-        <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="dataDetail.content">
-        </app-ckeditor-form>
+        <div class="container">
+            <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="dataDetail.content">
+            </app-ckeditor-form>
+        </div>
     </ng-container>
 </div>

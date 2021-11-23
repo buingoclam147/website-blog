@@ -6,5 +6,7 @@ export const ROUTER_CONST =
     "Liên hệ":"/contact",
     "Đăng nhập":"/login",
     "Đăng ký":"/login/register",
-    "Tạo mới bài viết":"/create-blog"
+    "Tạo mới bài viết":"/create-blog",
+    "Chi tiết bài viết":"/blog-detail"
+
 };
