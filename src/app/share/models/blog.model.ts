@@ -1,25 +1,30 @@
 export class CreateBlogReq {
+    _id: string;
     categoryId: string;
-    customerId: string;
-    censorId: string;
+    userId: string;
+    content: string;
     title: string;
+    like: number;
     nikname: string;
     createAt: string;
     status: string;
     constructor(
+        _id: string,
         categoryId: string,
-        customerId: string,
-        censorId: string,
+        userId: string,
+        content: string,
         title: string,
+        like: number,
         nikname: string,
         createAt: string,
         status: string
-        ) 
-        {
+    ) {
+        this._id = _id;
+        this.content = content;
         this.categoryId = categoryId;
-        this.customerId = customerId;
-        this.censorId = censorId;
+        this.userId = userId;
         this.title = title;
+        this.like = like;
         this.nikname = nikname;
         this.createAt = createAt;
         this.status = status;
