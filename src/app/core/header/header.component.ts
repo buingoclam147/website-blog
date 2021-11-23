@@ -21,7 +21,12 @@ export class HeaderComponent implements OnInit {
     });
   }
   onRouter(i): void {
-    this.router.navigate([ROUTER_CONST[i.target.outerText]]);
+    if (i === 'Trang chủ') {
+      this.router.navigate([ROUTER_CONST['Trang chủ']]);
+    }
+    else {
+      this.router.navigate([ROUTER_CONST[i.target.outerText]]);
+    }
   }
   logout() {
     this.auth.logout();

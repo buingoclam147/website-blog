@@ -30,3 +30,15 @@ export class CreateBlogReq {
         this.status = status;
     }
 }
+export class ListBlog {
+    total: string;
+    data: Array<CreateBlogReq>;
+    constructor
+        (
+            total: string,
+            data: Array<CreateBlogReq>
+        ) {
+        this.total = total;
+        this.data = data;
+    }
+}
