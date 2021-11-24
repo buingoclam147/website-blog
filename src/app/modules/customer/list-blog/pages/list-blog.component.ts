@@ -14,6 +14,7 @@ import { BlogStoreService } from '../../blog/store/blog-store.service';
   styleUrls: ['./list-blog.component.scss']
 })
 export class ListBlogComponent implements OnInit {
+  isPersonal = true;
   inputSearch = '';
   valueSelect = '';
   listBlog;
@@ -49,14 +50,26 @@ export class ListBlogComponent implements OnInit {
     this.blogStore.getBlog(this.table.pagination, this.table.filter).subscribe(x => {
       this.table.total = x.total;
       this.listBlog = x.data;
-      console.log(this.listBlog);
     });
   }
   searchTitle() {
     this.table.filter.title = this.inputSearch;
     this.filterBlog();
   }
-  routerBlogDetail(i){
+  routerBlogDetail(i) {
     this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], i]);
+  }
+  personalFilter(i) {
+    this.isPersonal = !this.isPersonal;
+    this.auth.currentUser$.subscribe(x=>{
+      if(i.target.outerText === "Của tôi"){
+        this.table.filter.userId = x;
+        this.filterBlog();
+      }
+      else{
+        this.table.filter.userId = null;
+        this.filterBlog();
+      }
+    })
   }
 }
