@@ -31,7 +31,15 @@
                     </div>
                 </div>
                 <div nz-col class="gutter-row" [nzSpan]="6">
-                    <div class="inner-box  pointer">Của tôi</div>
+                    <ng-container [ngSwitch]="isPersonal">
+                        <ng-container *ngSwitchCase="true">
+                            <ng-template [ngTemplateOutlet]="personal"></ng-template>
+                        </ng-container>
+                        <ng-container *ngSwitchCase="false">
+                            <ng-template [ngTemplateOutlet]="everyone"></ng-template>
+                        </ng-container>
+                    </ng-container>
+
                 </div>
                 <div nz-col class="gutter-row" [nzSpan]="6">
                     <div class="inner-box pointer" (click)="routerCreateBlog()">Tạo mới</div>
@@ -43,7 +51,7 @@
                         <div class="cart">
                             <img src="/assets/bgr-card{{a}}.jpg" alt="">
                             <div class="boxPersonal d-flex mb-2">
-                                <!-- <b>Angular{{blog.categoryId|category:listCategory.data}} | {{blog.nikname}}</b> -->
+                                <b>Angular{{blog.categoryId|category:listCategory.data}} | {{blog.nikname}}</b>
                                 <div class="left">{{blog.createAt |date:'dd/MM/yyyy'}}</div>
                             </div>
                             <h3 class="title-4 pointer" (click)="routerBlogDetail(blog._id)">{{blog.title}}</h3>
@@ -54,3 +62,9 @@
         </ng-container>
     </div>
 </div>
+<ng-template #personal>
+    <div class="inner-box  pointer" (click)="personalFilter($event)">Của tôi</div>
+</ng-template>
+<ng-template #everyone>
+    <div class="inner-box  pointer" (click)="personalFilter($event)">Mọi người</div>
+</ng-template>
