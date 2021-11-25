@@ -70,6 +70,7 @@
       </div>
       <div class="d-flex f-right ms-4">
         <button class="mx-2 btn-basic" (click)="view(2)">Xem</button>
+        <button class="mx-2 btn-basic" (click)="addBgrBlog()">Thêm nền bài viết</button>
         <button class="mx-2 btn-basic" (click)="routerDemo($event)">Đăng bài</button>
       </div>
     </div>
@@ -100,3 +101,46 @@
     [(data)]="data">
   </app-ckeditor-form>
 </ng-template>
+
+<nz-modal [(nzVisible)]="isVisibleBgr" nzTitle="Thêm ảnh nền cho bài viết" [nzFooter]="null"
+  (nzOnCancel)="handleCancelBgr()">
+  <ng-container *nzModalContent>
+    <input type="file" id="file" class="displayN" #userPhoto (change)="onFileSelected($event)" name="image"
+      autocomplete="off">
+    <label class="btn-basic mx-2 " for="file" (click)="isVisibleBgr=false">Thoát</label>
+    <label class="btn-basic mx-2 " for="file" *ngIf="!bgrUrl; else addImageTpl">Thêm ảnh</label>
+    <ng-template #addImageTpl>
+      <label class="btn-basic mx-2" for="file">Thay ảnh</label>
+    </ng-template>
+    
+    <div class="cartBlog" *ngIf="bgrUrl">
+      <hr width="472px" > 
+      <div class="inner-box my-3 pointer">
+        <div class="cart">
+          <img [src]="bgrUrl" [alt]="bgrUrl">
+          <div class="boxPersonal d-flex mb-2">
+            <b class="d-flex">
+              <ng-container *ngIf="onCategory; else notCategoryTpl ">{{onCategory}}</ng-container>
+              <ng-template #notCategoryTpl>
+                <b> Thể loại</b>
+              </ng-template>
+              <ng-container *ngIf="valueNikname; else notNiknameTpl">| {{valueNikname}}</ng-container>
+              <ng-template #notNiknameTpl>
+                <b>| Biệt danh</b>
+              </ng-template>
+            </b>
+            <div class="left">{{dateNow |date:'dd/MM/yyyy'}}</div>
+          </div>
+          <ng-container *ngIf="valueTitle; else notTitleTpl">
+            <h3>
+              {{valueTitle}}
+            </h3>
+          </ng-container>
+          <ng-template #notTitleTpl>
+            <h3 class="title-4">Tên bài viết của bạn</h3>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

@@ -63,4 +63,35 @@ input {}
   max-width: 700px;
   text-align: center;
 }
+.cart {
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 472.33px;
+    max-height: 270px;
+  }
+
+  .boxPersonal {
+    background: linear-gradient(to bottom, #354c74, #4c588d);
+    color: white;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 8px 16px;
+    justify-content: space-between;
+
+    b {
+      float: left;
+      align-items: center;
+    }
+
+    div {
+      float: right;
+    }
+  }
+
+  h3 {
+    color: #333;
+    font-weight: bold;
+  }
+}
 

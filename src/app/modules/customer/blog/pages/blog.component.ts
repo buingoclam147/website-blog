@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { finalize, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ROUTER_CONST } from 'src/app/core/const/router.const';
 import { CONFIG_CK_FORM } from 'src/app/core/const/sys.const';
@@ -16,6 +18,11 @@ import { BlogStoreService } from '../store/blog-store.service';
 	styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
+	bgrUrl = '';
+	downloadURL: Observable<string>;
+	selectedFile: File = null;
+	fb;
+	isVisibleBgr = false;
 	CONFIG_CK_FORM = CONFIG_CK_FORM
 	dateNow = new Date().getTime();
 	isVisible = false;
@@ -38,6 +45,7 @@ export class BlogComponent implements OnInit {
 		private message: NzMessageService,
 		private blogStore: BlogStoreService,
 		private router: Router,
+		private storage: AngularFireStorage
 	) {
 	}
 
@@ -97,7 +105,8 @@ export class BlogComponent implements OnInit {
 			content: this.data,
 			createAt: this.dateNow,
 			like: 0,
-			status: 'Pending'
+			status: 'Pending',
+			backgroundBlog: this.bgrUrl
 		}
 		this.blogStore.postOneBlog(dataBlog).subscribe(data => {
 			console.log(data);
@@ -122,5 +131,38 @@ export class BlogComponent implements OnInit {
 	}
 	view(page: number): void {
 		this.state = page;
+	}
+	addBgrBlog() {
+		this.isVisibleBgr = true
+	}
+	handleCancelBgr() {
+		this.isVisibleBgr = false;
+	}
+
+	onFileSelected(event) {
+		var n = Date.now();
+		const file = event.target.files[0];
+		const filePath = `bgr-blog/${n}`;
+		const fileRef = this.storage.ref(filePath);
+		const task = this.storage.upload(`bgr-blog/${n}`, file);
+		task
+			.snapshotChanges()
+			.pipe(
+				finalize(() => {
+					this.downloadURL = fileRef.getDownloadURL();
+					this.downloadURL.subscribe(url => {
+						if (url) {
+							this.fb = url;
+							this.bgrUrl = this.fb
+						}
+						console.log('this is url: '+this.bgrUrl);
+					});
+				})
+			)
+			.subscribe(url => {
+				if (url) {
+					console.log(url)
+				}
+			});
 	}
 }
