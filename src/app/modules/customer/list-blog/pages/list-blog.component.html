@@ -4,14 +4,13 @@
             <h3 class="title-8 bold textEspecially">Danh sách bài viết</h3>
         </div>
         <ng-container *ngIf="listCategory$ |async as listCategory">
-            <div class="boxMultimedia py-2 align-items-center text-center title-4" nz-row
-                [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-                <div nz-col class="gutter-row" [nzSpan]="6">
+            <div class="boxMultimedia py-2 align-items-center text-center title-4" nz-row>
+                <div nz-col [nzSpan]="6">
                     <div class="inner-box">
 
                         <nz-select [(ngModel)]="valueSelect" (ngModelChange)="valueSelectChange($event)"
                             class="selectCategory">
-                            <nz-option nzValue="" nzLabel="All"></nz-option>
+                            <nz-option nzValue="" nzLabel="Tất cả"></nz-option>
                             <ng-container *ngFor="let category of listCategory.data">
                                 <nz-option [nzValue]="category._id" [nzLabel]="category.name"></nz-option>
                             </ng-container>
@@ -45,16 +44,16 @@
                     <div class="inner-box pointer" (click)="routerCreateBlog()">Tạo mới</div>
                 </div>
             </div>
-            <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }" class="bgrCard mt-2">
+            <div nz-row class="bgrCard mt-2" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
                 <div nz-col class="gutter-row" [nzSpan]="8" *ngFor="let blog of listBlog">
-                    <div class="inner-box my-3">
+                    <div class="inner-box my-3 pointer" (click)="routerBlogDetail(blog._id)">
                         <div class="cart">
                             <img src="/assets/bgr-card{{a}}.jpg" alt="">
                             <div class="boxPersonal d-flex mb-2">
                                 <b>Angular{{blog.categoryId|category:listCategory.data}} | {{blog.nikname}}</b>
                                 <div class="left">{{blog.createAt |date:'dd/MM/yyyy'}}</div>
                             </div>
-                            <h3 class="title-4 pointer" (click)="routerBlogDetail(blog._id)">{{blog.title}}</h3>
+                            <h3 class="title-4 " >{{blog.title}}</h3>
                         </div>
                     </div>
                 </div>

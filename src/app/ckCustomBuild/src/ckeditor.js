@@ -41,6 +41,9 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist.js';
 import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter.js';
+import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+
 class Editor extends ClassicEditor { }
 
 // Plugins to include in the build.
@@ -83,7 +86,9 @@ Editor.builtinPlugins = [
 	TableToolbar,
 	TextTransformation,
 	Underline,
-	
+	CodeBlock,
+	Code,
+
 ];
 
 // Editor configuration.
@@ -95,6 +100,7 @@ Editor.defaultConfig = {
 			'bold',
 			'italic',
 			'underline',
+			'code',
 			'|',
 			'fontBackgroundColor',
 			'fontColor',
@@ -118,6 +124,7 @@ Editor.defaultConfig = {
 			'mediaEmbed',
 			'imageInsert',
 			'link',
+			'codeBlock',
 			'|',
 			'undo',
 			'redo'
