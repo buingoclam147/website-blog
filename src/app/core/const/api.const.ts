@@ -1,5 +1,11 @@
 export const API = {
     LOGIN: '/login',
+    INFOMATION: (id: any) => {
+        return 'user/' + id;
+    },
+    UPDATEUSER: (id: any) => {
+        return 'user/' + id;
+    },
     CATEGORY: {
         GET_LIST: 'category',
         GET_ONE: (id: any) => {

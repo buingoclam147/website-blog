@@ -22,7 +22,6 @@ export class RegiterComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    // console.log(this.form);
   }
 
   buildForm() {

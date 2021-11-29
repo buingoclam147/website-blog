@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: 'create-blog', loadChildren: () => import('./blog/blog.module').then((i) => i.BlogModule)},
   { path: 'login', loadChildren: () => import('./login/login.module').then((i) => i.LoginModule)},
   { path: 'list-blog', loadChildren: () => import('./list-blog/list-blog.module').then((i) => i.ListBlogModule)},
+  { path: 'user-infomation', loadChildren: () => import('./user-infomation/user-infomation.module').then((i) => i.UserInfomationModule)},
   { path: 'blog-detail/:id', loadChildren: () => import('./blog-detail/blog-detail.module').then((i) => i.BlogDetailModule)}
 ];
 
