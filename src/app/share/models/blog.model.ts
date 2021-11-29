@@ -8,6 +8,7 @@ export class CreateBlogReq {
     nikname: string;
     createAt: string;
     status: string;
+    backgroundBlog: string;
     constructor(
         _id: string,
         categoryId: string,
@@ -17,7 +18,8 @@ export class CreateBlogReq {
         like: number,
         nikname: string,
         createAt: string,
-        status: string
+        status: string,
+        backgroundBlog: string,
     ) {
         this._id = _id;
         this.content = content;
@@ -28,6 +30,7 @@ export class CreateBlogReq {
         this.nikname = nikname;
         this.createAt = createAt;
         this.status = status;
+        this.backgroundBlog = backgroundBlog
     }
 }
 export class ListBlog {

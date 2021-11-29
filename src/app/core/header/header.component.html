@@ -34,7 +34,7 @@
         <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown [nzDropdownMenu]="menu">
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
-                <li nz-menu-item>Thông tin cá nhân</li>
+                <li nz-menu-item (click)="onRouter($event)">Thông tin cá nhân</li>
                 <li nz-menu-item >Bài viết của bạn</li>
                 <li nz-menu-item (click)="logout()">Đăng xuất</li>
             </ul>

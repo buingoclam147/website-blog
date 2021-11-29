@@ -7,6 +7,7 @@ export const ROUTER_CONST =
     "Đăng nhập":"/login",
     "Đăng ký":"/login/register",
     "Tạo mới bài viết":"/create-blog",
-    "Chi tiết bài viết":"/blog-detail"
+    "Chi tiết bài viết":"/blog-detail",
+    "Thông tin cá nhân":"/user-infomation"
 
 };

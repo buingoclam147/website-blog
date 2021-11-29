@@ -1,0 +1,83 @@
+<div class="container-fluid mheight">
+    <div class="box-current my-5" *ngIf="userInfomation">
+        <div class="d-flex main-infomation boder-bt " *ngIf="isUpdate">
+            <img *ngIf="userInfomation.avatar; else noAvatarTpl" [src]="userInfomation.avatar"
+                [alt]="userInfomation.avatar" class="avt-big">
+            <ng-template #noAvatarTpl>
+                <img class="avt-big" src="assets/avt.png" alt="avt">
+            </ng-template>
+            <b class="title-6 mt-2" *ngIf="userInfomation.fullName; else noFullNameTpl">{{userInfomation.fullName}}
+            </b>
+            <ng-template #noFullNameTpl>
+                <b class="title-6 mt-2">Vô Danh</b>
+            </ng-template>
+        </div>
+
+        <div class="d-flex main-infomation boder-bt " *ngIf="!isUpdate">
+            <div class="box-img">
+                <img *ngIf="tempUserInfomation.avatar; else noAvatarTpl" [src]="tempUserInfomation.avatar"
+                    [alt]="tempUserInfomation.avatar" class="avt-big">
+                <ng-template #noAvatarTpl>
+                    <img class="avt-big" src="assets/avt.png" alt="avt">
+                </ng-template>
+                <input type="file" id="file" class="displayN" #userPhoto (change)="onFileSelected($event)" name="image"
+                    autocomplete="off">
+                <label class="btn-update" for="file">Cập nhật ảnh</label>
+            </div>
+            <input class="my-2" nzSize="large" nz-input placeholder="Tên đầy đủ"
+                [(ngModel)]="tempUserInfomation.fullName" />
+        </div>
+
+        <div class="mt-4 boder-bt" *ngIf="isUpdate">
+            <div class="d-flex ">
+                <h2 class="st-ii">Tên đăng nhập: <p>{{userInfomation.userName}}</p>
+                </h2>
+            </div>
+
+            <div class="d-flex ">
+                <h2 class="st-ii">Số điện thoại: <p>{{userInfomation.phoneNumber}}</p>
+                </h2>
+            </div>
+            <div class="d-flex ">
+                <h2 class="st-ii">Giới tính:<p>{{userInfomation.sex? 'Nam':'Nữ'}}</p>
+                </h2>
+            </div>
+            <div class="d-flex ">
+                <h2 class="st-ii">Ngày sinh: <p>{{userInfomation.dateOfBirth |date:'dd/MM/yyyy'}}</p>
+                </h2>
+            </div>
+            <div class="d-flex ">
+                <h2 class="st-ii">Địa chỉ: <p>{{userInfomation.address}}</p>
+                </h2>
+            </div>
+        </div>
+        <div class="mt-4 boder-bt" *ngIf="!isUpdate">
+            <div class="d-flex my-3">
+                <input nzSize="large" nz-input placeholder="Tên đăng nhập" [(ngModel)]="tempUserInfomation.userName" />
+            </div>
+            <div class="d-flex my-3">
+                <input nzSize="large" nz-input placeholder="Số điện thoại"
+                    [(ngModel)]="tempUserInfomation.phoneNumber" />
+            </div>
+            <nz-select nzSize="large" nzShowSearch nzAllowClear nzPlaceHolder="Giới tính"
+                [(ngModel)]="tempUserInfomation.sex">
+                <nz-option nzLabel="Nam" nzValue="true"></nz-option>
+                <nz-option nzLabel="Nữ" nzValue="false"></nz-option>
+            </nz-select>
+            <div class="d-flex my-3">
+                <nz-date-picker [nzPlaceHolder]="'Ngày sinh'" [(ngModel)]="tempUserInfomation.dateOfBirth"
+                    [nzSize]="'large'">
+                </nz-date-picker>
+            </div>
+            <div class="d-flex my-3">
+                <input nzSize="large" nz-input placeholder="Địa chỉ" [(ngModel)]="tempUserInfomation.address" />
+            </div>
+        </div>
+        <button *ngIf="isUpdate; else UpdateTpl" class="btn-basic mx-2" (click)="isUpdate = !isUpdate">Cập nhật</button>
+        <ng-template #UpdateTpl>
+            <button class="btn-basic mx-2" (click)="update()">Xong</button>
+            <button class="btn-basic mx-2" (click)="isUpdate = !isUpdate">Hủy</button>
+        </ng-template>
+    </div>
+    {{tempUserInfomation |json}}
+</div>

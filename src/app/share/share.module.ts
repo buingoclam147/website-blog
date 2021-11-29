@@ -24,6 +24,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
@@ -31,10 +32,11 @@ import { FormControlErrorComponent } from './components/form-control-error/form-
 import { InputPwComponent } from './components/input-pw/input-pw.component';
 import { CkeditorFormComponent } from './components/ckeditor-form/ckeditor-form.component';
 import { CategoryPipe } from './pipes/category.pipe';
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
 
 
 @NgModule({
-  declarations: [InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe],
+  declarations: [ DatepickerComponent,InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -50,6 +52,7 @@ import { CategoryPipe } from './pipes/category.pipe';
     NzSelectModule,
     NzDividerModule,
     NzModalModule,
+    NzDatePickerModule,
     CKEditorModule,
     HttpClientModule,
     AngularFireStorageModule,
@@ -73,7 +76,9 @@ import { CategoryPipe } from './pipes/category.pipe';
     NzDividerModule,
     NzModalModule,
     CkeditorFormComponent,
-    CategoryPipe
+    CategoryPipe,
+    DatepickerComponent,
+    NzDatePickerModule
   ]
 })
 export class ShareModule { }

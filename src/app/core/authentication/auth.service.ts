@@ -4,6 +4,7 @@ import { BehaviorSubject, observable, Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpService, METHOD } from '../http/http.service';
 import { ROUTER_CONST } from '../const/router.const';
+import { API } from '../const/api.const';
 @Injectable({
   providedIn: 'root'
 })
@@ -39,11 +40,19 @@ export class AuthService {
     }
     return this.httpService.sendToServer(METHOD.POST, 'user', data)
   }
-  
+
+
   logout() {
     localStorage.removeItem('userId');
     localStorage.removeItem('role');
     this.router.navigate([ROUTER_CONST['Đăng nhập']]);
     this._currentUser$.next('');
   }
+  getPersonalInfomation(id: string): Observable<any> {
+    return this.httpService.sendToServer(METHOD.GET, API.INFOMATION(id));
+  }
+  updateUser(id: string, data: any): Observable<any>{
+    return this.httpService.sendToServer(METHOD.PATCH, API.UPDATEUSER(id), data);
+  }
+  
 }
