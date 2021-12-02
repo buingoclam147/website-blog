@@ -44,25 +44,36 @@
                     <div class="inner-box pointer" (click)="routerCreateBlog()">Tạo mới</div>
                 </div>
             </div>
-            <div nz-row class="bgrCard mt-2" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
-                <div nz-col class="gutter-row" [nzSpan]="8" *ngFor="let blog of listBlog">
-                    <div class="inner-box my-3 pointer" (click)="routerBlogDetail(blog._id)">
-                        <div class="cart">
-                            <ng-container *ngIf="blog.backgroundBlog; else noBgrBlogTpl">
-                                <img [src]="blog.backgroundBlog" [alt]="blog.backgroundBlog">
-                            </ng-container>
-                            <ng-template #noBgrBlogTpl>
-                                <img src="/assets/bgr-card{{a}}.jpg" alt="bgr-card{{a}}">
-                            </ng-template>
-                            <div class="boxPersonal d-flex mb-2">
-                                <b>Angular{{blog.categoryId|category:listCategory.data}} | {{blog.nikname}}</b>
-                                <div class="left">{{blog.createAt |date:'dd/MM/yyyy'}}</div>
+            <ng-container *ngIf="loader; else noDateTpl">
+                <div class="example">
+                    <nz-spin nzSimple></nz-spin>
+                </div>
+            </ng-container>
+            <ng-template #noDateTpl>
+                <div *ngIf="noData" class="mt-4">
+                    <nz-empty [nzNotFoundContent]="'Không có bài viết nào'"></nz-empty>
+                </div>
+                <div nz-row class="bgrCard mt-2" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+                    <div nz-col class="gutter-row" [nzSpan]="8" *ngFor="let blog of listBlog">
+                        <div class="inner-box my-3 pointer" (click)="routerBlogDetail(blog._id)">
+                            <div class="cart">
+                                <ng-container *ngIf="blog.backgroundBlog; else noBgrBlogTpl">
+                                    <img [src]="blog.backgroundBlog" [alt]="blog.backgroundBlog">
+                                </ng-container>
+                                <ng-template #noBgrBlogTpl>
+                                    <img src="/assets/bgr-card{{a}}.jpg" alt="bgr-card{{a}}">
+                                </ng-template>
+                                <div class="boxPersonal d-flex mb-2">
+                                    <b>Angular{{blog.categoryId|category:listCategory.data}} | {{blog.nikname}}</b>
+                                    <div class="left">{{blog.createAt |date:'dd/MM/yyyy'}}</div>
+                                </div>
+                                <h3 class="title-4 ">{{blog.title}}</h3>
                             </div>
-                            <h3 class="title-4 " >{{blog.title}}</h3>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-template>
+
         </ng-container>
     </div>
 </div>

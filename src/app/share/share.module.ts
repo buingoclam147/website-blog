@@ -26,6 +26,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
 import { FormControlErrorComponent } from './components/form-control-error/form-control-error.component';
@@ -55,6 +57,8 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     NzDatePickerModule,
     CKEditorModule,
     HttpClientModule,
+    NzSpinModule,
+    NzEmptyModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud')
   ],
@@ -78,7 +82,9 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     CkeditorFormComponent,
     CategoryPipe,
     DatepickerComponent,
-    NzDatePickerModule
+    NzDatePickerModule,
+    NzEmptyModule,
+    NzSpinModule
   ]
 })
 export class ShareModule { }

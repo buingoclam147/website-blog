@@ -14,6 +14,8 @@ import { BlogStoreService } from '../../blog/store/blog-store.service';
   styleUrls: ['./list-blog.component.scss']
 })
 export class ListBlogComponent implements OnInit {
+  loader = true;
+  noData = false;
   isPersonal = true;
   inputSearch = '';
   valueSelect = '';
@@ -47,9 +49,17 @@ export class ListBlogComponent implements OnInit {
     this.filterBlog();
   }
   filterBlog() {
+    this.loader = true;
     this.blogStore.getBlog(this.table.pagination, this.table.filter).subscribe(x => {
       this.table.total = x.total;
       this.listBlog = x.data;
+      if (x.data.length === 0) {
+        this.noData = true;
+      }
+      else {
+        this.noData = false;
+      }
+      this.loader = false;
     });
   }
   searchTitle() {
