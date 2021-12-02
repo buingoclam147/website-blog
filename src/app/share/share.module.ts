@@ -24,6 +24,9 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
@@ -50,6 +53,9 @@ import { CategoryPipe } from './pipes/category.pipe';
     NzSelectModule,
     NzDividerModule,
     NzModalModule,
+    NzDatePickerModule,
+    NzEmptyModule,
+    NzSpinModule,
     CKEditorModule,
     HttpClientModule,
     AngularFireStorageModule,
@@ -73,7 +79,11 @@ import { CategoryPipe } from './pipes/category.pipe';
     NzDividerModule,
     NzModalModule,
     CkeditorFormComponent,
-    CategoryPipe
+    CategoryPipe,
+    NzDatePickerModule,
+    NzEmptyModule,
+    NzSpinModule,
+
   ]
 })
 export class ShareModule { }

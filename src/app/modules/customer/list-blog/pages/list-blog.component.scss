@@ -10,7 +10,7 @@
 }
 
 nz-select {
-  width: 100%;
+  width: 98%;
   background: linear-gradient(to bottom, #354c74, #4c588d);
   color: rgb(102, 99, 99);
   font-size: 18px;
@@ -59,9 +59,9 @@ nz-select {
 }
 
 .bgrCard {
-  color: white;
-  background: linear-gradient(to bottom, #4c588d, #d29376);
-  min-height: 500px;
+  color: #333;
+  background: white;
+  min-height: 360px;
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
 }
@@ -71,12 +71,12 @@ nz-select {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     width: 405.33px;
-    height: auto;
+    height: 253.33px;
   }
 
   .boxPersonal {
-    background-color: #CEE5D0;
-    color: #333;
+    background: linear-gradient(to bottom, #354c74, #4c588d);
+    color: white;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     padding: 8px 16px;
@@ -93,6 +93,16 @@ nz-select {
   }
 
   h3 {
-    color: white;
+    color: #333;
+    font-weight: bold;
   }
+}
+.example {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 30px 50px;
+  margin: 20px auto;
+  width: 100%;
 }

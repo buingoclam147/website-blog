@@ -14,8 +14,11 @@ import { BlogStoreService } from '../../blog/store/blog-store.service';
   styleUrls: ['./list-blog.component.scss']
 })
 export class ListBlogComponent implements OnInit {
+  loader = true;
+  isPersonal = true;
   inputSearch = '';
   valueSelect = '';
+  noData = false;
   listBlog;
   a = Math.floor(Math.random() * 8) + 1;
   listCategory$: Observable<ListCategory>;
@@ -46,10 +49,18 @@ export class ListBlogComponent implements OnInit {
     this.filterBlog();
   }
   filterBlog() {
+    this.loader = true;
     this.blogStore.getBlog(this.table.pagination, this.table.filter).subscribe(x => {
       this.table.total = x.total;
       this.listBlog = x.data;
-      console.log(this.listBlog);
+
+      if (x.data.length === 0) {
+        this.noData = true;
+      }
+      else {
+        this.noData = false;
+      }
+      this.loader = false;
     });
   }
   searchTitle() {
@@ -58,5 +69,19 @@ export class ListBlogComponent implements OnInit {
   }
   routerBlogDetail(i){
     this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], i]);
+  }
+
+  personalFilter(i) {
+    this.isPersonal = !this.isPersonal;
+    this.auth.currentUser$.subscribe(x => {
+      if (i.target.outerText === "Của tôi") {
+        this.table.filter.userId = x;
+        this.filterBlog();
+      }
+      else {
+        this.table.filter.userId = null;
+        this.filterBlog();
+      }
+    })
   }
 }
