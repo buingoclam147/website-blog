@@ -3,7 +3,8 @@
         <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
             <div nz-col class="gutter-row" [nzSpan]="8">
                 <div class="inner-box ">
-                    <img class="logo-header pointer" src="/assets/logo-mini.PNG" alt="logo blog" (click)="onRouter('Trang chủ')">
+                    <img class="logo-header pointer" src="/assets/logo-mini.PNG" alt="logo blog"
+                        (click)="onRouter('Trang chủ')">
                 </div>
             </div>
             <div nz-col class="gutter-row align-items-center" [nzSpan]="12">
@@ -18,7 +19,8 @@
             </div>
             <div nz-col class="gutter-row btn-login m-auto" [nzSpan]="4">
                 <div class="inner-box ">
-                    <ng-container [ngTemplateOutlet]="loginTpl" *ngIf="userId === '' || userId === null; else logoutTpl">
+                    <ng-container [ngTemplateOutlet]="loginTpl"
+                        *ngIf="userId === '' || userId === null; else logoutTpl">
                     </ng-container>
 
                 </div>
@@ -31,11 +33,14 @@
 </ng-template>
 <ng-template #logoutTpl>
     <div class="ms-3 title-4 f-right">
-        <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown [nzDropdownMenu]="menu">
+        <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown [nzDropdownMenu]="menu"
+            *ngIf="avt === undefined || avt === 'undefined', else noAvt">
+        <ng-template #noAvt>
+            <img [src]="avt" [alt]="avt" class="avt" nz-dropdown [nzDropdownMenu]="menu">
+        </ng-template>
         <nz-dropdown-menu #menu="nzDropdownMenu">
             <ul nz-menu nzSelectable>
                 <li nz-menu-item (click)="onRouter($event)">Thông tin cá nhân</li>
-                <li nz-menu-item >Bài viết của bạn</li>
                 <li nz-menu-item (click)="logout()">Đăng xuất</li>
             </ul>
         </nz-dropdown-menu>

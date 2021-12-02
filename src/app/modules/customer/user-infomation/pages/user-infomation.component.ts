@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { stringify } from 'querystring';
 import { Observable, observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { AuthService } from 'src/app/core/authentication/auth.service';
@@ -37,14 +38,12 @@ export class UserInfomationComponent implements OnInit {
   update() {
     this.userInfomation = { ...this.tempUserInfomation, dateOfBirth: new Date(this.tempUserInfomation.dateOfBirth).getTime() }
     this.auth.updateUser(this.currentUser, this.userInfomation).subscribe(data => {
-      console.log(data);
       this.isUpdate = !this.isUpdate
       this.message.success('Cập nhật thông tin thành công', {
         nzDuration: 5000
       });
-
+      this.auth.updateImage(data.avatar);
     })
-    console.log(this.userInfomation);
   }
   onFileSelected(event) {
     var n = Date.now();

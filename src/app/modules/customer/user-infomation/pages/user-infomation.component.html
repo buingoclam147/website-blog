@@ -60,9 +60,9 @@
                     [(ngModel)]="tempUserInfomation.phoneNumber" />
             </div>
             <nz-select nzSize="large" nzShowSearch nzAllowClear nzPlaceHolder="Giới tính"
-                [(ngModel)]="tempUserInfomation.sex">
-                <nz-option nzLabel="Nam" nzValue="true"></nz-option>
-                <nz-option nzLabel="Nữ" nzValue="false"></nz-option>
+                [(ngModel)]="tempUserInfomation.sex" >
+                <nz-option nzLabel="Nam" [nzValue]="true"></nz-option>
+                <nz-option nzLabel="Nữ" [nzValue]="false"></nz-option>
             </nz-select>
             <div class="d-flex my-3">
                 <nz-date-picker [nzPlaceHolder]="'Ngày sinh'" [(ngModel)]="tempUserInfomation.dateOfBirth"
@@ -79,5 +79,4 @@
             <button class="btn-basic mx-2" (click)="isUpdate = !isUpdate">Hủy</button>
         </ng-template>
     </div>
-    {{tempUserInfomation |json}}
 </div>

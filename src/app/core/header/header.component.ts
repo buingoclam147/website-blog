@@ -10,6 +10,7 @@ import { ROUTER_CONST } from '../const/router.const';
 })
 export class HeaderComponent implements OnInit {
   userId = '';
+  avt = undefined;
   constructor(
     private router: Router,
     public auth: AuthService
@@ -19,6 +20,9 @@ export class HeaderComponent implements OnInit {
     this.auth.currentUser$.subscribe(id => {
       this.userId = id;
     });
+    this.auth.avatarU$.subscribe(avt => {
+      this.avt = avt;
+    })
   }
   onRouter(i): void {
     if (i === 'Trang chủ') {
