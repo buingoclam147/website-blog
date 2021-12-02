@@ -69,7 +69,9 @@ a {
 .bgr-w {
   background-color: white !important;
 }
-
+.color-w{
+  color: white;
+}
 .relative {
   position: relative;
 }
@@ -177,7 +179,7 @@ body {
 }
 
 .mheight {
-  min-height: 550px;
+  min-height: 640px;
 }
 
 .selectCategory>.ant-select-selector {
