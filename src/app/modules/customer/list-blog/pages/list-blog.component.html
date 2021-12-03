@@ -44,12 +44,12 @@
                     <div class="inner-box pointer" (click)="routerCreateBlog()">Tạo mới</div>
                 </div>
             </div>
-            <ng-container *ngIf="loader; else noDateTpl">
+            <ng-container *ngIf="loader; else noDataTpl">
                 <div class="example">
                     <nz-spin nzSimple></nz-spin>
                 </div>
             </ng-container>
-            <ng-template #noDateTpl>
+            <ng-template #noDataTpl>
                 <div *ngIf="noData" class="mt-4">
                     <nz-empty [nzNotFoundContent]="'Không có bài viết nào'"></nz-empty>
                 </div>
@@ -71,6 +71,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="pagination-bottom mt-3">
+                    <nz-pagination [nzPageIndex]="table.pagination.page + 1 " [nzTotal]="table.total" [nzPageSize]="2"
+                        (nzPageIndexChange)="pageIndexChange($event)" [nzPageSize]="table.pagination.perPage"
+                        nzShowSizeChanger [nzPageSizeOptions]="[6, 9, 18]" (nzPageSizeChange)="pageSizeChange($event)">
+                    </nz-pagination>
                 </div>
             </ng-template>
 

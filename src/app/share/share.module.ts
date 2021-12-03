@@ -25,7 +25,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
-
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 //import declarations
@@ -57,6 +57,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     NzDatePickerModule,
     CKEditorModule,
     HttpClientModule,
+    NzPaginationModule,
     NzSpinModule,
     NzEmptyModule,
     AngularFireStorageModule,
@@ -84,7 +85,8 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     DatepickerComponent,
     NzDatePickerModule,
     NzEmptyModule,
-    NzSpinModule
+    NzSpinModule,
+    NzPaginationModule,
   ]
 })
 export class ShareModule { }

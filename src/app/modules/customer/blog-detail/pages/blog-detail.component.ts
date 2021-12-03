@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CategoryService } from 'src/app/core/services/category.service';
 import { CreateBlogReq } from 'src/app/share/models/blog.model';
 import { ListCategory } from 'src/app/share/models/category.model';
@@ -13,9 +14,10 @@ import { BlogStoreService } from '../../blog/store/blog-store.service';
   styleUrls: ['./blog-detail.component.scss']
 })
 export class BlogDetailComponent implements OnInit {
+  loader = true;
   idBlog;
-  dataDetail$: Observable<CreateBlogReq>;
   idcategory$: Observable<ListCategory>;
+  dataDetail: CreateBlogReq;
   constructor(
     private route: ActivatedRoute,
     private blogStore: BlogStoreService,
@@ -25,7 +27,13 @@ export class BlogDetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       this.idBlog = params.get('id');
-      this.dataDetail$ = this.blogStore.getOneBlog(this.idBlog);
+      this.blogStore.getOneBlog(this.idBlog).subscribe(data => {
+        this.dataDetail = { ...data, view: data.view + 1 };
+        this.loader = false;
+        this.blogStore.updateBlog(this.idBlog, this.dataDetail).subscribe(_ => {
+        })
+      });
+
     });
     this.idcategory$ = this.categoryService.getCategory(new Pagination(99, 0), '')
   }

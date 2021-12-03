@@ -20,3 +20,19 @@
   max-width: 700px;
   text-align: center;
 }
+
+.viewQuantity {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+
+  i {
+    font-size: 24px;
+    margin-right: 4px;
+  }
+
+  div {
+    font-size: 20px;
+  }
+}

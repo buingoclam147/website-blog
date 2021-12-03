@@ -97,6 +97,7 @@ nz-select {
     font-weight: bold;
   }
 }
+
 .example {
   text-align: center;
   background: rgba(0, 0, 0, 0.05);
@@ -105,4 +106,17 @@ nz-select {
   padding: 30px 50px;
   margin: 20px 0;
   width: 100%;
+}
+
+.pagination-bottom {
+  background: linear-gradient(to bottom, #354c74, #4c588d);
+  width: 100%;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  padding: 8px;
+}
+
+nz-pagination {
+  display: flex;
+  justify-content: center;
 }

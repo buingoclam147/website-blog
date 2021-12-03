@@ -104,7 +104,7 @@ export class BlogComponent implements OnInit {
 			nikname: this.valueNikname,
 			content: this.data,
 			createAt: this.dateNow,
-			like: 0,
+			view: 0,
 			status: 'Pending',
 			backgroundBlog: this.bgrUrl
 		}

@@ -1,6 +1,10 @@
 <div class=" dataView">
-    <ng-container *ngIf="dataDetail$ |async as dataDetail">
-
+    <ng-container *ngIf="loader; else noDataTpl">
+        <div class="example">
+            <nz-spin nzSimple></nz-spin>
+        </div>
+    </ng-container>
+    <ng-template #noDataTpl>
         <div class="individual d-flex justify-content-center align-items-center pt-4 mb-3">
             <div nz-row class="align-items-center">
                 <div class="mx-2 d-flex align-items-center">
@@ -22,9 +26,13 @@
                 {{dataDetail.title}}
             </div>
         </div>
-        <div class="container">
+        <div class="container relative">
+            <div class="viewQuantity">
+                <i nz-icon nzType="eye" nzTheme="outline"></i> 
+                <div>{{dataDetail.view}}</div>
+            </div>
             <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="dataDetail.content">
             </app-ckeditor-form>
         </div>
-    </ng-container>
+    </ng-template>
 </div>

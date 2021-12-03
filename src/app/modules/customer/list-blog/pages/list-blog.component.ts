@@ -22,7 +22,7 @@ export class ListBlogComponent implements OnInit {
   listBlog;
   a = Math.floor(Math.random() * 8) + 1;
   listCategory$: Observable<ListCategory>;
-  table: Table = new Table(new Pagination(+this.valueSelect, 0), 0, [],
+  table: Table = new Table(new Pagination(6, 0), 0, [],
     {
       categoryId: '',
       Title: '',
@@ -60,6 +60,7 @@ export class ListBlogComponent implements OnInit {
         this.noData = false;
       }
       this.loader = false;
+      console.log(this.table);
     });
   }
   searchTitle() {
@@ -71,15 +72,23 @@ export class ListBlogComponent implements OnInit {
   }
   personalFilter(i) {
     this.isPersonal = !this.isPersonal;
-    this.auth.currentUser$.subscribe(x=>{
-      if(i.target.outerText === "Của tôi"){
+    this.auth.currentUser$.subscribe(x => {
+      if (i.target.outerText === "Của tôi") {
         this.table.filter.userId = x;
         this.filterBlog();
       }
-      else{
+      else {
         this.table.filter.userId = null;
         this.filterBlog();
       }
     })
+  }
+  pageSizeChange(value): void {
+    this.table.pageSizeChange(value);
+    this.filterBlog();
+  }
+  pageIndexChange(value): void {
+    this.table.pageIndexChange(value);
+    this.filterBlog();
   }
 }

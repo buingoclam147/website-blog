@@ -4,7 +4,7 @@ export class CreateBlogReq {
     userId: string;
     content: string;
     title: string;
-    like: number;
+    view: number;
     nikname: string;
     createAt: string;
     status: string;
@@ -15,7 +15,7 @@ export class CreateBlogReq {
         userId: string,
         content: string,
         title: string,
-        like: number,
+        view: number,
         nikname: string,
         createAt: string,
         status: string,
@@ -26,7 +26,7 @@ export class CreateBlogReq {
         this.categoryId = categoryId;
         this.userId = userId;
         this.title = title;
-        this.like = like;
+        this.view = view;
         this.nikname = nikname;
         this.createAt = createAt;
         this.status = status;
