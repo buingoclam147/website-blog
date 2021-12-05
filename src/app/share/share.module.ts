@@ -35,10 +35,11 @@ import { InputPwComponent } from './components/input-pw/input-pw.component';
 import { CkeditorFormComponent } from './components/ckeditor-form/ckeditor-form.component';
 import { CategoryPipe } from './pipes/category.pipe';
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { AvatarPipe } from './pipes/avatar.pipe';
 
 
 @NgModule({
-  declarations: [ DatepickerComponent,InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe],
+  declarations: [ DatepickerComponent,InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe, AvatarPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -87,6 +88,7 @@ import { DatepickerComponent } from './components/datepicker/datepicker.componen
     NzEmptyModule,
     NzSpinModule,
     NzPaginationModule,
+    AvatarPipe
   ]
 })
 export class ShareModule { }

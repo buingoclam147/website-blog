@@ -36,3 +36,41 @@
     font-size: 20px;
   }
 }
+.bgrCard {
+  color: #333;
+  background: white;
+  min-height: 360px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+.cart {
+  img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    width: 485.5px;
+    height: 253.33px;
+  }
+
+  .boxPersonal {
+    background: linear-gradient(to bottom, #354c74, #4c588d);
+    color: white;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 8px 16px;
+    justify-content: space-between;
+
+    b {
+      float: left;
+      align-items: center;
+    }
+
+    div {
+      float: right;
+    }
+  }
+
+  h3 {
+    color: #333;
+    font-weight: bold;
+  }
+}

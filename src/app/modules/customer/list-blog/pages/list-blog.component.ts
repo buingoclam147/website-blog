@@ -60,7 +60,7 @@ export class ListBlogComponent implements OnInit {
         this.noData = false;
       }
       this.loader = false;
-      console.log(this.table);
+      console.log(this.listBlog);
     });
   }
   searchTitle() {

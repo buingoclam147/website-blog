@@ -5,34 +5,58 @@
         </div>
     </ng-container>
     <ng-template #noDataTpl>
-        <div class="individual d-flex justify-content-center align-items-center pt-4 mb-3">
-            <div nz-row class="align-items-center">
-                <div class="mx-2 d-flex align-items-center">
-                    <img class="avt" src="/assets/avt.png" alt="avt" nz-dropdown>
-                    <div class="textEspecially ms-2">{{dataDetail.nikname}}</div>
-                </div>
-                <div class="st-thanh">/</div>
-                <div class="mx-2">
-                    <div>{{ dataDetail.createAt|date:'dd/MM/yyyy'}}</div>
-                </div>
-                <div class="st-thanh">/</div>
-                <div class="mx-2">
-                    <ng-container *ngIf="idcategory$ |async as idcategory">
+        <ng-container *ngIf="idcategory$ |async as idcategory">
+            <div class="individual d-flex justify-content-center align-items-center pt-4 mb-3">
+                <div nz-row class="align-items-center">
+                    <div class="mx-2 d-flex align-items-center">
+                        <img class="avt" [src]="avatar" [alt]="avatar" nz-dropdown>
+                        <div class="textEspecially ms-2">{{dataDetail.nikname}}</div>
+                    </div>
+                    <div class="st-thanh">/</div>
+                    <div class="mx-2">
+                        <div>{{ dataDetail.createAt|date:'dd/MM/yyyy'}}</div>
+                    </div>
+                    <div class="st-thanh">/</div>
+                    <div class="mx-2">
+
                         <div class="textEspecially">{{dataDetail.categoryId |category:idcategory.data}}</div>
-                    </ng-container>
+                    </div>
+                </div>
+                <div nz-row class="titleView d-flex align-item-center  justify-content-center mt-3 title-7">
+                    {{dataDetail.title}}
                 </div>
             </div>
-            <div nz-row class="titleView d-flex align-item-center  justify-content-center mt-3 title-7">
-                {{dataDetail.title}}
+            <div class="container relative">
+                <div class="viewQuantity">
+                    <i nz-icon nzType="eye" nzTheme="outline"></i>
+                    <div>{{dataDetail.view}}</div>
+                </div>
+                <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true"
+                    [(data)]="dataDetail.content">
+                </app-ckeditor-form>
             </div>
-        </div>
-        <div class="container relative">
-            <div class="viewQuantity">
-                <i nz-icon nzType="eye" nzTheme="outline"></i> 
-                <div>{{dataDetail.view}}</div>
+            <div class="individual container">
+                <h2 class="bold title-6">Bài viết liên quan</h2>
+                <div nz-row class="bgrCard mt-2" [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+                    <div nz-col class="gutter-row" [nzSpan]="8" *ngFor="let blog of connectionBlog">
+                        <div class="inner-box my-3 pointer" (click)="routerBlogDetail(blog._id)">
+                            <div class="cart">
+                                <ng-container *ngIf="blog.backgroundBlog; else noBgrBlogTpl">
+                                    <img [src]="blog.backgroundBlog" [alt]="blog.backgroundBlog">
+                                </ng-container>
+                                <ng-template #noBgrBlogTpl>
+                                    <img src="/assets/bgr-card{{a}}.jpg" alt="bgr-card{{a}}">
+                                </ng-template>
+                                <div class="boxPersonal d-flex mb-2">
+                                    <b>{{blog.categoryId|category:idcategory.data}} | {{blog.nikname}}</b>
+                                    <div class="left">{{blog.createAt |date:'dd/MM/yyyy'}}</div>
+                                </div>
+                                <h3 class="title-4 ">{{blog.title}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <app-ckeditor-form [config]="{ toolbar: [], language:''}" [readonly]="true" [(data)]="dataDetail.content">
-            </app-ckeditor-form>
-        </div>
+        </ng-container>
     </ng-template>
 </div>
