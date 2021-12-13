@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ROUTER_CONST } from 'src/app/core/const/router.const';
 
@@ -11,18 +12,24 @@ import { ROUTER_CONST } from 'src/app/core/const/router.const';
 export class FirstHomeComponent implements OnInit {
   constructor(
     private router: Router,
+    private auth: AuthService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit() {
   }
   onRouter(_) {
-    if (localStorage.getItem('userId') !== undefined || localStorage.getItem('userId') !== '' || localStorage.getItem('userId') !== null) {
-      this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]);
-    }
-    else {
-      this.router.navigate([ROUTER_CONST['Đăng nhập']]);
-
-    }
+    this.auth.currentUser$.subscribe(id =>{
+      console.log(id)
+      if (id === undefined || id === '' || id === null) {
+        this.router.navigate([ROUTER_CONST['Đăng nhập']]);
+        this.message.info('Hãy đăng nhập để viết bài');
+      }
+      else {
+        this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]);
+      }
+    })
+    
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ROUTER_CONST } from 'src/app/core/const/router.const';
@@ -31,7 +32,8 @@ export class ListBlogComponent implements OnInit {
     private auth: AuthService,
     private router: Router,
     private blogStore: BlogStoreService,
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private message: NzMessageService
   ) { }
 
   ngOnInit(): void {
@@ -41,7 +43,13 @@ export class ListBlogComponent implements OnInit {
   }
   routerCreateBlog() {
     this.auth.currentUser$.subscribe(x => {
-      x ? this.router.navigate([ROUTER_CONST['Tạo mới bài viết']]) : this.router.navigate([ROUTER_CONST['Đăng nhập']]);
+      if(x){
+        this.router.navigate([ROUTER_CONST['Tạo mới bài viết']])
+      }
+      else{
+        this.router.navigate([ROUTER_CONST['Đăng nhập']])
+        this.message.info('Hãy đăng nhập để viết bài');
+      }
     })
   }
   valueSelectChange(i): void {
@@ -49,7 +57,6 @@ export class ListBlogComponent implements OnInit {
     this.filterBlog();
   }
   filterBlog() {
-    this.loader = true;
     this.blogStore.getBlog(this.table.pagination, this.table.filter).subscribe(x => {
       this.table.total = x.total;
       this.listBlog = x.data;
@@ -60,7 +67,6 @@ export class ListBlogComponent implements OnInit {
         this.noData = false;
       }
       this.loader = false;
-      console.log(this.listBlog);
     });
   }
   searchTitle() {
@@ -71,15 +77,23 @@ export class ListBlogComponent implements OnInit {
     this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], i]);
   }
   personalFilter(i) {
-    this.isPersonal = !this.isPersonal;
     this.auth.currentUser$.subscribe(x => {
-      if (i.target.outerText === "Của tôi") {
-        this.table.filter.userId = x;
-        this.filterBlog();
+      if (x === '' || x === undefined || x === null) {
+        this.message.info('Hãy đăng nhập để xem bài viết viết cá nhân');
+        this.router.navigate([ROUTER_CONST['Đăng nhập']]);
       }
       else {
-        this.table.filter.userId = null;
-        this.filterBlog();
+        this.isPersonal = !this.isPersonal;
+        this.auth.currentUser$.subscribe(x => {
+          if (i.target.outerText === "Của tôi") {
+            this.table.filter.userId = x;
+            this.filterBlog();
+          }
+          else {
+            this.table.filter.userId = null;
+            this.filterBlog();
+          }
+        })
       }
     })
   }
