@@ -45,3 +45,4 @@ testem.log
 Thumbs.db
 
 .vercel
+/src/app/ckCustomBuild/node_modules
