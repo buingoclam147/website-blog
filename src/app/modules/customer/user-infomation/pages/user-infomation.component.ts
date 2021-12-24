@@ -38,11 +38,12 @@ export class UserInfomationComponent implements OnInit {
   update() {
     this.userInfomation = { ...this.tempUserInfomation, dateOfBirth: new Date(this.tempUserInfomation.dateOfBirth).getTime() }
     this.auth.updateUser(this.currentUser, this.userInfomation).subscribe(data => {
+      console.log(data);
       this.isUpdate = !this.isUpdate
       this.message.success('Cập nhật thông tin thành công', {
         nzDuration: 5000
       });
-      this.auth.updateImage(data.avatar);
+      this.auth.updateImage(this.tempUserInfomation.avatar);
     })
   }
   onFileSelected(event) {
@@ -60,14 +61,13 @@ export class UserInfomationComponent implements OnInit {
             if (url) {
               this.fb = url;
               this.tempUserInfomation.avatar = this.fb;
-              console.log(this.tempUserInfomation);
             }
           });
         })
       )
       .subscribe(url => {
         if (url) {
-          console.log(url)
+          // console.log(url)
         }
       });
   }

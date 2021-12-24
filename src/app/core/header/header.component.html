@@ -14,6 +14,7 @@
                         <li class="ms-3 title-4" (click)="onRouter($event)">Bài viết</li>
                         <li class="ms-3 title-4" (click)="onRouter($event)">Về chúng tôi</li>
                         <li class="ms-3 title-4" (click)="onRouter($event)">Liên hệ</li>
+                        <li class="ms-3 title-4" *ngIf="isRole" (click)="onRouter($event)">Kiểm duyệt</li>
                     </ul>
                 </div>
             </div>

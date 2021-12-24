@@ -20,7 +20,6 @@ export class FirstHomeComponent implements OnInit {
   }
   onRouter(_) {
     this.auth.currentUser$.subscribe(id =>{
-      console.log(id)
       if (id === undefined || id === '' || id === null) {
         this.router.navigate([ROUTER_CONST['Đăng nhập']]);
         this.message.info('Hãy đăng nhập để viết bài');

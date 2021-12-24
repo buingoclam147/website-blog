@@ -4,6 +4,7 @@ export class CreateBlogReq {
     userId: string;
     content: string;
     title: string;
+    checked: boolean;
     view: number;
     nikname: string;
     createAt: string;
@@ -15,6 +16,7 @@ export class CreateBlogReq {
         userId: string,
         content: string,
         title: string,
+        checked: boolean,
         view: number,
         nikname: string,
         createAt: string,
@@ -26,6 +28,7 @@ export class CreateBlogReq {
         this.categoryId = categoryId;
         this.userId = userId;
         this.title = title;
+        this.checked = checked;
         this.view = view;
         this.nikname = nikname;
         this.createAt = createAt;

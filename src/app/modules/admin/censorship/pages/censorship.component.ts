@@ -5,22 +5,22 @@ import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ROUTER_CONST } from 'src/app/core/const/router.const';
 import { CategoryService } from 'src/app/core/services/category.service';
+import { BlogStoreService } from 'src/app/modules/customer/blog/store/blog-store.service';
 import { ListCategory } from 'src/app/share/models/category.model';
 import { Pagination, Table } from 'src/app/share/models/table.model';
-import { BlogStoreService } from '../../blog/store/blog-store.service';
 
 @Component({
-  selector: 'app-list-blog',
-  templateUrl: './list-blog.component.html',
-  styleUrls: ['./list-blog.component.scss']
+  selector: 'app-censorship',
+  templateUrl: './censorship.component.html',
+  styleUrls: ['./censorship.component.scss']
 })
-export class ListBlogComponent implements OnInit {
+export class CensorshipComponent implements OnInit {
   loader = true;
   noData = false;
   isPersonal = true;
   inputSearch = '';
   valueSelect = '';
-  listBlog;
+  listBlog = [];
   a = Math.floor(Math.random() * 8) + 1;
   listCategory$: Observable<ListCategory>;
   table: Table = new Table(new Pagination(6, 0), 0, [],
@@ -29,7 +29,6 @@ export class ListBlogComponent implements OnInit {
       Title: '',
     });
   constructor(
-    private auth: AuthService,
     private router: Router,
     private blogStore: BlogStoreService,
     private categoryService: CategoryService,
@@ -41,18 +40,7 @@ export class ListBlogComponent implements OnInit {
     this.filterBlog();
 
   }
-  routerCreateBlog() {
-    this.auth.currentUser$.subscribe(x => {
-      if(x){
-        this.router.navigate([ROUTER_CONST['Tạo mới bài viết']])
-      }
-      else{
-        this.router.navigate([ROUTER_CONST['Đăng nhập']]);
-        this.message.info('Hãy đăng nhập để viết bài');
 
-      }
-    })
-  }
   valueSelectChange(i): void {
     this.table.filter.categoryId = i;
     this.filterBlog();
@@ -66,6 +54,11 @@ export class ListBlogComponent implements OnInit {
       }
       else {
         this.noData = false;
+        this.table.isCheckedAll = false;
+        this.table.data = x.data.map((i: any) => {
+          i.checked = false;
+          return i;
+        });
       }
       this.loader = false;
     });
@@ -77,28 +70,7 @@ export class ListBlogComponent implements OnInit {
   routerBlogDetail(i) {
     this.router.navigate([ROUTER_CONST['Chi tiết bài viết'], i]);
   }
-  personalFilter(i) {
-    this.auth.currentUser$.subscribe(x => {
-      if (x === '' || x === undefined || x === null) {
-        this.router.navigate([ROUTER_CONST['Đăng nhập']]);
-        this.message.info('Hãy đăng nhập để xem bài viết viết cá nhân');
 
-      }
-      else {
-        this.isPersonal = !this.isPersonal;
-        this.auth.currentUser$.subscribe(x => {
-          if (i.target.outerText === "Của tôi") {
-            this.table.filter.userId = x;
-            this.filterBlog();
-          }
-          else {
-            this.table.filter.userId = null;
-            this.filterBlog();
-          }
-        })
-      }
-    })
-  }
   pageSizeChange(value): void {
     this.table.pageSizeChange(value);
     this.filterBlog();
@@ -106,5 +78,15 @@ export class ListBlogComponent implements OnInit {
   pageIndexChange(value): void {
     this.table.pageIndexChange(value);
     this.filterBlog();
+  }
+  deleteManyBlog(): void {
+    const data = [];
+    this.table.data.forEach(item => {
+      return item.checked === true ? data.push(item._id) : data;
+    });
+    this.blogStore.deleteBlog(data).subscribe(_ => {
+      this.filterBlog();
+      this.message.success('Xóa bài viết thành công');
+    });
   }
 }

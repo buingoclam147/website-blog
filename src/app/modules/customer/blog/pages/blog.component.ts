@@ -109,7 +109,6 @@ export class BlogComponent implements OnInit {
 			backgroundBlog: this.bgrUrl
 		}
 		this.blogStore.postOneBlog(dataBlog).subscribe(data => {
-			console.log(data);
 			this.message.success('Bài viết đã được đăng thành công!', {
 				nzDuration: 5000
 			});

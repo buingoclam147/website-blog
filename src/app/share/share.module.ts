@@ -27,7 +27,9 @@ import { NzModalModule } from 'ng-zorro-antd/modal';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzEmptyModule } from 'ng-zorro-antd/empty';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { NzPopconfirmModule } from 'ng-zorro-antd/popconfirm';
 //import declarations
 import { InputBasicComponent } from './components/input-basic/input-basic.component';
 import { FormControlErrorComponent } from './components/form-control-error/form-control-error.component';
@@ -39,7 +41,7 @@ import { AvatarPipe } from './pipes/avatar.pipe';
 
 
 @NgModule({
-  declarations: [ DatepickerComponent,InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe, AvatarPipe],
+  declarations: [DatepickerComponent, InputBasicComponent, FormControlErrorComponent, InputPwComponent, CkeditorFormComponent, CategoryPipe, AvatarPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -60,6 +62,8 @@ import { AvatarPipe } from './pipes/avatar.pipe';
     HttpClientModule,
     NzPaginationModule,
     NzSpinModule,
+    NzCheckboxModule,
+    NzPopconfirmModule,
     NzEmptyModule,
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud')
@@ -86,9 +90,11 @@ import { AvatarPipe } from './pipes/avatar.pipe';
     DatepickerComponent,
     NzDatePickerModule,
     NzEmptyModule,
+    NzPopconfirmModule,
     NzSpinModule,
     NzPaginationModule,
-    AvatarPipe
+    AvatarPipe,
+    NzCheckboxModule
   ]
 })
 export class ShareModule { }

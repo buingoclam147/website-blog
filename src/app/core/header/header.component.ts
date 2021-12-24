@@ -11,6 +11,7 @@ import { ROUTER_CONST } from '../const/router.const';
 export class HeaderComponent implements OnInit {
   userId = '';
   avt = undefined;
+  isRole = false;
   constructor(
     private router: Router,
     public auth: AuthService
@@ -22,6 +23,17 @@ export class HeaderComponent implements OnInit {
     });
     this.auth.avatarU$.subscribe(avt => {
       this.avt = avt;
+    })
+    this.auth.role$.subscribe(role => {
+      if(role === undefined || role === "" || role === null || role ==="Customer" || role ==="customer"){
+        this.isRole = false;
+      }
+      if(role ==="admin" || role === "Admin"){
+        this.isRole = true;
+      }
+      else{
+        console.log('err role')
+      }
     })
   }
   onRouter(i): void {

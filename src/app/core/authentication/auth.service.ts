@@ -13,6 +13,8 @@ export class AuthService {
   public readonly currentUser$ = this._currentUser$.asObservable();
   private _avatarU$ = new BehaviorSubject(undefined);
   public readonly avatarU$ = this._avatarU$.asObservable();
+  private _role$ = new BehaviorSubject(undefined);
+  public readonly role$ = this._role$.asObservable();
   constructor(
     private router: Router,
     private httpService: HttpService,
@@ -20,6 +22,10 @@ export class AuthService {
     const exitedUserId = localStorage.getItem('userId');
     if (exitedUserId) {
       this._currentUser$.next(exitedUserId);
+    }
+    const role = localStorage.getItem('role');
+    if (role) {
+      this._role$.next(role);
     }
     const avatarValue = localStorage.getItem('avatar');
     if (avatarValue) {
@@ -35,6 +41,7 @@ export class AuthService {
           localStorage.setItem('avatar', x.avatar);
           this._currentUser$.next(x._id);
           this._avatarU$.next(x.avatar);
+          this._role$.next(x.role);
         }
       })
     );
@@ -50,6 +57,7 @@ export class AuthService {
   updateImage(image) {
     localStorage.setItem('avatar', image);
     this._avatarU$.next(image);
+    console.log(image);
   }
 
   logout() {
@@ -58,6 +66,7 @@ export class AuthService {
     localStorage.removeItem('avatar');
     this.router.navigate([ROUTER_CONST['Đăng nhập']]);
     this._currentUser$.next('');
+    this._role$.next('');
   }
   getPersonalInfomation(id: string): Observable<any> {
     return this.httpService.sendToServer(METHOD.GET, API.INFOMATION(id));

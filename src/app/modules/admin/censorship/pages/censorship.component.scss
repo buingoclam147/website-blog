@@ -67,17 +67,12 @@ nz-select {
 
 .cart {
   position: relative;
+
   img {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     width: 405.33px;
     height: 253.33px;
-    transition: 0.8s;
-  }
-
-  img:hover {
-    transform: rotate(-3deg) scale(1.5);
-    opacity: 0.8;
   }
 
   .boxPersonal {
@@ -127,9 +122,21 @@ nz-pagination {
   justify-content: center;
 }
 
-.hover-img {
-  overflow: hidden;
+.cbx {
+  position: absolute;
+  right: 8px;
+  top: 5px;
+  width: 16px;
+  height: 16px;
 }
+
+.cbx-all {
+  // margin-left: 40px;
+
+}
+
+
+
 .ribbon-wrapper {
   z-index: 10000;
   width: 96px;
@@ -154,3 +161,4 @@ nz-pagination {
     color: #fff;
   }
 }
+

@@ -9,4 +9,5 @@ export const ROUTER_CONST =
     "Tạo mới bài viết": "/create-blog",
     "Chi tiết bài viết": "/blog-detail",
     "Thông tin cá nhân": "/user-infomation",
+    "Kiểm duyệt": "/admin/censorship",
 };

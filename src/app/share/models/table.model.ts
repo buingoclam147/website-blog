@@ -14,16 +14,17 @@ export class Table {
         this.isLoading = true;
         this.isCheckedAll = false;
     }
-    check(item): void {
-        item.checked = !item.checked;
-        this.isCheckedAll = this.data.filter(x => x.checked).length === this.data.length;
-    }
-    checkAll(): void {
+    // check(item): void {
+    //     console.log(item);
+    //     item.checked = !item.checked;
+    //     this.isCheckedAll = this.data.filter(x => x.checked).length === this.data.length;
+    // }
+    checkAll(checkAll): void {
         this.data = this.data.map(x => {
-            x.checked = !this.isCheckedAll;
+            x.checked = checkAll;
             return x;
         });
-        this.isCheckedAll = !this.isCheckedAll;
+        this.isCheckedAll = checkAll;
     }
     pageIndexChange(value): void {
         this.isLoading = true;
