@@ -18,7 +18,8 @@ export class HttpService {
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
+    }),
+    withCredentials: true
   };
   constructor(private httpClient: HttpClient) { }
   sendToServer(method: METHOD, uri: string, data?: any): Observable<any> {
@@ -37,7 +38,9 @@ export class HttpService {
           params: data,
           headers: new HttpHeaders({
             'Content-Type': 'application/json'
-          })
+    
+          }),
+          withCredentials: true
         })
           .pipe(
             catchError(this.handleError)

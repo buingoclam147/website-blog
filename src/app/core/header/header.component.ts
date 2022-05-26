@@ -21,23 +21,24 @@ export class HeaderComponent implements OnInit {
     this.auth.token$.subscribe(token => {
       this.auth.setToken(token);
     })
-    // this.auth.currentUser$.subscribe(id => {
-    //   this.userId = id;
-    // });
-    // this.auth.avatarU$.subscribe(avt => {
-    //   this.avt = avt;
-    // })
-    // this.auth.role$.subscribe(role => {
-    //   if(role === undefined || role === "" || role === null || role ==="Customer" || role ==="customer"){
-    //     this.isRole = false;
-    //   }
-    //   if(role ==="admin" || role === "Admin"){
-    //     this.isRole = true;
-    //   }
-    //   else{
-    //     console.log('err role')
-    //   }
-    // })
+    this.auth.currentUser$.subscribe(id => {
+      this.userId = id;
+    });
+    this.auth.avatarU$.subscribe(avt => {
+      this.avt = avt;
+    })
+    this.auth.role$.subscribe(role => {
+      console.log(role);
+      if(role === undefined || role === "" || role === null || role ==="Customer" || role ==="customer"){
+        this.isRole = false;
+      }
+      if(role ==="admin" || role === "Admin"){
+        this.isRole = true;
+      }
+      else{
+        console.log('err role')
+      }
+    })
   }
   onRouter(i): void {
     if (i === 'Trang chủ') {

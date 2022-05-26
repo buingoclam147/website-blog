@@ -70,12 +70,11 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('role');
-    localStorage.removeItem('avatar');
+    this.removeToken();
     this.router.navigate([ROUTER_CONST['Đăng nhập']]);
     this._currentUser$.next('');
     this._role$.next('');
+    this._avatarU$.next('');
   }
   getPersonalInfomation(id: string): Observable<any> {
     return this.httpService.sendToServer(METHOD.GET, API.INFOMATION(id));
@@ -87,11 +86,8 @@ export class AuthService {
 
   }
   public setToken(token: string) {
-
-    console.log('token', token);
     if (!token) {
-      localStorage.removeItem('token');
-      this.istoken = false;
+      this.removeToken();
       return;
     }
     localStorage.setItem('token', token);
@@ -100,8 +96,17 @@ export class AuthService {
     const expirationDate = helper.getTokenExpirationDate(token);
     const isExpired = helper.isTokenExpired(token);
     this.istoken = !isExpired;
-    console.log('decodedToken', decodedToken);
-    console.log('expirationDate', expirationDate);
-    console.log('isExpired', isExpired);
+    // console.log('decodedToken', decodedToken);
+    // console.log('expirationDate', expirationDate);
+    // console.log('isExpired', isExpired);
+    if (decodedToken) {
+      this._avatarU$.next(decodedToken?.data?.avatar);
+      this._currentUser$.next(decodedToken?.data?._id);
+      this._role$.next(decodedToken?.data?.role);
+    }
+  }
+  removeToken() {
+    localStorage.removeItem('token');
+    this.istoken = false;
   }
 }
