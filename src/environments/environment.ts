@@ -14,10 +14,10 @@ export const environment = {
     appId: '1:646212456037:web:3e3110efed1923b4f3408c',
     measurementId: 'G-4TDEFFK41M'
   },
-  // endPoint: 'https://backend-nodejs-blog.herokuapp.com/api/',
-  // localhost: 'https://backend-nodejs-blog.herokuapp.com/'
-  endPoint: 'http://localhost:3000/api/',
-  localhost: 'http://localhost:3000/'
+  endPoint: 'https://backend-nodejs-blog.herokuapp.com/api/',
+  localhost: 'https://backend-nodejs-blog.herokuapp.com/'
+  // endPoint: 'http://localhost:3000/api/',
+  // localhost: 'http://localhost:3000/'
   
 };
 
